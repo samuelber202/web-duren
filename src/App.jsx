@@ -1,9 +1,14 @@
-import { Text } from "@chakra-ui/react";
+import { Routes, Route } from "react-router-dom";
+
 function App() {
   return (
-    <>
-      <Text fontSize="6xl">Web Duren</Text>
-    </>
+    <main>
+      <Routes>
+        {/* <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
+      </Routes>
+    </main>
   );
 }
 
