@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Flex,
@@ -11,8 +11,8 @@ import {
   DrawerContent,
   DrawerCloseButton,
   DrawerBody,
-} from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,35 +22,49 @@ function Navbar() {
   };
 
   return (
-    <Box bgGradient='linear(red.100 0%, orange.100 25%, yellow.100 50%)'
-    p={6} color="black">
+    <Box
+      bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)"
+      p={6}
+      color="black"
+    >
       <Flex alignItems="center">
         <Heading size="md">Your Logo</Heading>
         <Spacer />
-        <Flex display={{ base: 'none', md: 'flex' }}>
-          <Link mr={4} color="black" _hover={{
-        transform: 'scale(1.2)',
-        transition: 'transform 0.2s ease-in-out',
-      }}>
+        <Flex display={{ base: "none", md: "flex" }}>
+          <Link
+            mr={4}
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
             Home
           </Link>
-          <Link mr={4} color="black" _hover={{
-        transform: 'scale(1.2)', // Scale the text by 1.5 times on hover
-        transition: 'transform 0.2s ease-in-out', // Add a smooth transition effect
-      }}>
+          <Link
+            mr={4}
+            color="black"
+            _hover={{
+              transform: "scale(1.2)", // Scale the text by 1.5 times on hover
+              transition: "transform 0.2s ease-in-out", // Add a smooth transition effect
+            }}
+          >
             About
           </Link>
-          <Link color="black" _hover={{
-        transform: 'scale(1.2)', // Scale the text by 1.5 times on hover
-        transition: 'transform 0.2s ease-in-out', // Add a smooth transition effect
-      }}>
+          <Link
+            color="black"
+            _hover={{
+              transform: "scale(1.2)", // Scale the text by 1.5 times on hover
+              transition: "transform 0.2s ease-in-out", // Add a smooth transition effect
+            }}
+          >
             Contact
           </Link>
         </Flex>
         <IconButton
           icon={<HamburgerIcon />}
           aria-label="Open Mobile Menu"
-          display={{ base: 'flex', md: 'none' }}
+          display={{ base: "flex", md: "none" }}
           onClick={toggleMobileMenu}
         />
       </Flex>
@@ -65,13 +79,13 @@ function Navbar() {
           <DrawerCloseButton />
           <DrawerBody>
             <Flex direction="column">
-              <Link mb={4} color="black" _hover={{ textDecoration: 'none' }}>
+              <Link mb={4} color="black" _hover={{ textDecoration: "none" }}>
                 Home
               </Link>
-              <Link mb={4} color="black" _hover={{ textDecoration: 'none' }}>
+              <Link mb={4} color="black" _hover={{ textDecoration: "none" }}>
                 About
               </Link>
-              <Link color="black" _hover={{ textDecoration: 'none' }}>
+              <Link color="black" _hover={{ textDecoration: "none" }}>
                 Contact
               </Link>
             </Flex>
@@ -82,4 +96,4 @@ function Navbar() {
   );
 }
 
-export default Navbar
+export default Navbar;

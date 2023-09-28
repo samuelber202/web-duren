@@ -7,13 +7,12 @@ import "./globals.css";
 import { Provider } from "react-redux";
 import store from "./config/redux/store.js";
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
       <BrowserRouter>
-      <Provider store={store}>
-        <App />
+        <Provider store={store}>
+          <App />
         </Provider>
       </BrowserRouter>
     </ChakraProvider>

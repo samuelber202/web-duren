@@ -1,8 +1,7 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { Box, Image } from '@chakra-ui/react';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Box, Image } from "@chakra-ui/react";
 
 const Carousel = () => {
   const settings = {
@@ -17,7 +16,7 @@ const Carousel = () => {
     <Box>
       <Slider {...settings}>
         <Box>
-        <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+          <div style={{ display: "flex", flexDirection: "row-reverse" }}>
             <Image src="/images/ebeh.png" alt="Image 1" />
           </div>
         </Box>
