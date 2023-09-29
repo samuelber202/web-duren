@@ -22,10 +22,14 @@ function Navbar() {
   };
 
   return (
-    <Box bgGradient='linear(red.100 0%, orange.100 25%, yellow.100 50%)'
+    <Box 
     p={6} color="black">
       <Flex alignItems="center">
-        <Heading size="md">Your Logo</Heading>
+      <img src="/images/logo.png" width="30px" alt=""/>
+      <Heading fontWeight="bold" size="sm" ml={2}>
+          <span style={{ display: 'block' }}>Desa Duren</span>
+          <span style={{ display: 'block', fontWeight:'normal' }}>Kabupaten Karawang</span>
+        </Heading>
         <Spacer />
         <Flex display={{ base: 'none', md: 'flex' }}>
           <Link mr={4} color="black" _hover={{

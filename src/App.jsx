@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'; // Assuming you're using Redux for authentication state
 import Login from './pages/Login';
-import Dashboard from './components/layouts/Dashboard';
+import Dashboard from './components/Dashboard';
 import { useEffect } from 'react';
 import Home from './pages/Home';
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import LoginForm from '../components/layouts/LoginForm'
+import LoginForm from '../components/LoginForm'
 import { Box, Container } from '@chakra-ui/react'
 
 function Login() {
