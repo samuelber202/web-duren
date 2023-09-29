@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, FormControl, Input, Stack } from "@chakra-ui/react";
-import { login } from "../../config/redux/actions/loginAction";
+import { login } from "../config/redux/actions/loginAction";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
