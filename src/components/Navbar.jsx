@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Flex,
@@ -11,8 +11,8 @@ import {
   DrawerContent,
   DrawerCloseButton,
   DrawerBody,
-} from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,83 +21,138 @@ function Navbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  
-
   return (
-    <Box 
-    p={6} color="black">
+    <Box p={6} color="black">
       <Flex alignItems="center">
-      <img src="/images/logo.png" width="30px" alt=""/>
-      <Heading fontWeight="bold" size="sm" ml={2}>
-          <span style={{ display: 'block' }}>Desa Duren</span>
-          <span style={{ display: 'block', fontWeight:'normal' }}>Kabupaten Karawang</span>
-        </Heading>
+        <Link as="a" href="/home" _hover={{ textDecoration: "none" }}>
+          <Flex alignItems="center">
+            <img src="/images/logo.png" width="30px" alt="" />
+            <Heading fontWeight="bold" size="sm" ml={2}>
+              <span style={{ display: "block" }}>Desa Duren</span>
+              <span style={{ display: "block", fontWeight: "normal" }}>
+                Kabupaten Karawang
+              </span>
+            </Heading>
+          </Flex>
+        </Link>
         <Spacer />
-        <Flex display={{ base: 'none', md: 'flex' }}>
-          <Link mr={6} color="black" _hover={{
-        transform: 'scale(1.2)',
-        transition: 'transform 0.2s ease-in-out',
-      }}>
+        <Flex display={{ base: "none", md: "flex" }}>
+          <Link
+            href="/home"
+            mr={6}
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
             Home
           </Link>
-          <Link mr={6} color="black" _hover={{
-        transform: 'scale(1.2)', 
-        transition: 'transform 0.2s ease-in-out',
-      }}>
+          <Link
+            mr={6}
+            href="/kegiatan-warga"
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
             Kegiatan
           </Link>
-          <Link mr={6} color="black" _hover={{
-        transform: 'scale(1.2)', 
-        transition: 'transform 0.2s ease-in-out', 
-        
-      }}>
+          <Link
+            mr={6}
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
             UMKM
           </Link>
-          <Link mr={6} color="black" _hover={{
-        transform: 'scale(1.2)', 
-        transition: 'transform 0.2s ease-in-out', 
-      }}>
+          <Link
+            mr={6}
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
             Informasi
           </Link>
-          <Link color="black" _hover={{
-        transform: 'scale(1.2)', 
-        transition: 'transform 0.2s ease-in-out',
-      }}>
+          <Link
+            href="/tentang-desa"
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
             Tentang Desa
           </Link>
         </Flex>
         <IconButton
           icon={<HamburgerIcon />}
           aria-label="Open Mobile Menu"
-          display={{ base: 'flex', md: 'none' }}
+          display={{ base: "flex", md: "none" }}
           onClick={toggleMobileMenu}
         />
       </Flex>
 
       <Drawer
-       placement="top"
-       onClose={toggleMobileMenu}
-       isOpen={isMobileMenuOpen}
-       size="full"
+        placement="top"
+        onClose={toggleMobileMenu}
+        isOpen={isMobileMenuOpen}
+        size="full"
       >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerBody>
-          <Flex direction="column" gap={8} align="center" justify="center" h="100%">
-              <Link mb={4} fontWeight={'bold'} color="black" _hover={{ textDecoration: 'none' }}>
+            <Flex
+              direction="column"
+              gap={8}
+              align="center"
+              justify="center"
+              h="100%"
+            >
+              <Link
+                href="/home"
+                mb={4}
+                fontWeight={"bold"}
+                color="black"
+                _hover={{ textDecoration: "none" }}
+              >
                 Home
               </Link>
-              <Link mb={4} fontWeight={'bold'} color="black" _hover={{ textDecoration: 'none' }}>
+              <Link
+                href="/kegiatan-warga"
+                mb={4}
+                fontWeight={"bold"}
+                color="black"
+                _hover={{ textDecoration: "none" }}
+              >
                 Kegiatan
               </Link>
-              <Link color="black" fontWeight={'bold'} _hover={{ textDecoration: 'none' }}>
+              <Link
+                color="black"
+                fontWeight={"bold"}
+                _hover={{ textDecoration: "none" }}
+              >
                 UMKM
               </Link>
-              <Link color="black" fontWeight={'bold'} _hover={{ textDecoration: 'none' }}>
+              <Link
+                color="black"
+                fontWeight={"bold"}
+                _hover={{ textDecoration: "none" }}
+              >
                 Informasi
               </Link>
-              <Link color="black" fontWeight={'bold'} _hover={{ textDecoration: 'none' }}>
+              <Link
+                href="/tentang-desa"
+                color="black"
+                fontWeight={"bold"}
+                _hover={{ textDecoration: "none" }}
+              >
                 Tentang Desa
               </Link>
             </Flex>
@@ -108,4 +163,4 @@ function Navbar() {
   );
 }
 
-export default Navbar
+export default Navbar;

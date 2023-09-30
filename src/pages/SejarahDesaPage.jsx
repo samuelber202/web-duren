@@ -16,17 +16,12 @@ const SejarahDesaPage = () => {
             sejarah desa
           </Heading>
         </Box>
-        <Box
-          backgroundColor="white"
-          mx={{ base: "16px", md: 10, sm: 2 }}
-          p={8}
-          borderRadius="10px 10px 0 0"
-        >
+        <Box backgroundColor="white" p={8} borderRadius="10px 10px 0 0">
           <Text textAlign="justify">
             <Image
               float={"left"}
               mr={5}
-              mb={{ base: 0, md: 0, sm: 5 }}
+              mb={{ base: 5, md: 0, sm: 5 }}
               src="/images/sejarah-desa.png"
             />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat

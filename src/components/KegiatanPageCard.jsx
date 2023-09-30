@@ -2,15 +2,12 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Heading,
-  StackDivider,
-  Stack,
-  Box,
   Image,
   Text,
+  Flex,
 } from "@chakra-ui/react";
-const KegiatanCard = () => {
+const KegiatanCard = ({ title, description, imageUrl, date, tag }) => {
   return (
     <Card
       maxW="sm"
@@ -18,44 +15,35 @@ const KegiatanCard = () => {
       overflow="hidden"
       filter="drop-shadow(4px 6px 4px rgba(0, 0, 0, 0.25))"
     >
+      <Image
+        alt="kegiatan-warga"
+        src={imageUrl}
+        position={"relative"}
+        width={"100%"}
+        top={0}
+        left={0}
+      />
       <CardHeader>
-        <Image
-          src="/images/kegiatan-warga.png"
-          position={"absolute"}
-          width={"100%"}
-          top={0}
-          left={0}
-        />
-        <Heading size="md">Client Report</Heading>
+        <Flex justifyContent="space-between">
+          <Text
+            fontSize="0.75rem"
+            fontWeight={600}
+            color="gray.600"
+            textTransform={"uppercase"}
+            mb={4}
+          >
+            {" "}
+            {tag}{" "}
+          </Text>
+          <Text fontSize="0.75rem" fontWeight={600} color="gray.600">
+            {" "}
+            {date}{" "}
+          </Text>
+        </Flex>
+        <Heading fontSize="1.125rem">{title}</Heading>
       </CardHeader>
-
-      <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Summary
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              View a summary of all your clients over the last month.
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Overview
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              Check out the overview of your clients.
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Analysis
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              See a detailed analysis of all your business clients.
-            </Text>
-          </Box>
-        </Stack>
+      <CardBody pt={0}>
+        <Text fontSize="0.875rem">{description}</Text>
       </CardBody>
     </Card>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
 
 function KegiatanCard({ title, description, imageUrl, date }) {
@@ -6,9 +5,9 @@ function KegiatanCard({ title, description, imageUrl, date }) {
     <Box
       borderWidth="1px"
       borderRadius="lg"
-      backgroundColor={'#2C285C'}
+      backgroundColor={"#2C285C"}
       overflow="hidden"
-      color={'white'}
+      color={"white"}
       boxShadow="md"
       p={4}
       marginBottom={4}
@@ -22,7 +21,12 @@ function KegiatanCard({ title, description, imageUrl, date }) {
         display={{ base: "flex", md: "block" }}
         justifyContent={{ base: "center", md: "unset" }}
       >
-        <Image src={imageUrl} alt={title} maxW={{ base: "100%", md: "200px" }} /> {/* Responsive image width */}
+        <Image
+          src={imageUrl}
+          alt={title}
+          maxW={{ base: "100%", md: "200px" }}
+        />{" "}
+        {/* Responsive image width */}
       </Box>
       <Box flex={{ base: 1, md: 2 }}>
         <Text fontWeight="bold" fontSize={{ base: "xl", md: "2xl" }} mb={2}>
