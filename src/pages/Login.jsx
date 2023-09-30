@@ -5,7 +5,7 @@ import { Box, Container } from '@chakra-ui/react'
 
 function Login() {
   return (
-    <>
+    <section>
       <Box
         display="flex"
         justifyContent="center"
@@ -16,7 +16,7 @@ function Login() {
           <LoginForm />
         </Container>
       </Box>
-    </>
+    </section>
   );
 }
 
