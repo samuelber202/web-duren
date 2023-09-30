@@ -6,18 +6,18 @@ import { Box, Container } from '@chakra-ui/react'
 function Login() {
   return (
     <>
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-    >
-    <Container>
-     <LoginForm/>
-     </Container>
-    </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+        <Container>
+          <LoginForm />
+        </Container>
+      </Box>
     </>
-  )
+  );
 }
 
-export default Login
+export default Login;

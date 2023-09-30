@@ -8,7 +8,7 @@ function MenuCard() {
   return (
     <>
     
-     <Text fontWeight={'bold'} textAlign={'center'} mb={'5'} fontSize={'2xl'}>LOREM</Text>
+     <Text fontWeight={'bold'} textAlign={'center'} mb={'5'} fontSize={'2xl`'}>LOREM</Text>
     
  <Flex
           justifyContent="center"
