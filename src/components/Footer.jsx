@@ -8,6 +8,7 @@ const Footer = () => {
         position="relative"
         bg="#282455"
         py={10}
+        mt={10}
         color="white"
       >
            <Flex
@@ -30,9 +31,7 @@ const Footer = () => {
           </Text>
           <Text
             fontSize={14}
-            fontFamily="Poppins"
-            fontWeight="300"
-            whiteSpace="break-word"
+          
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             porro reprehenderit eligendi sint eos rerum facilis enim iusto animi
@@ -41,9 +40,7 @@ const Footer = () => {
           </Text>
           <Link
             fontSize={14}
-            fontFamily="Poppins"
-            fontWeight="600"
-            whiteSpace="break-word"
+          
           >
             Selengkapnya...
           </Link>
@@ -54,17 +51,13 @@ const Footer = () => {
         >
           <Text
             fontSize={32}
-            fontFamily="Poppins"
-            fontWeight="400"
-            whiteSpace="break-word"
+           
           >
-            Kontol Kami
+            Kontak Kami
           </Text>
           <Text
             fontSize={14}
-            fontFamily="Poppins"
-            fontWeight="300"
-            whiteSpace="break-word"
+           
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
             porro reprehenderit eligendi sint eos rerum facilis enim iusto animi
@@ -73,9 +66,7 @@ const Footer = () => {
           </Text>
           <Link
             fontSize={14}
-            fontFamily="Poppins"
-            fontWeight="600"
-            whiteSpace="break-word"
+            
           >
             Selengkapnya...
           </Link>
@@ -93,11 +84,11 @@ const Footer = () => {
         color="white"
         fontSize="sm"
       >
-        <Text textAlign="center" mb={3}>
-          KKN UNSIKA 2023
+        <Text textAlign="center" fontWeight={'bold'} mb={3}>
+         DESA DUREN KARAWANG
         </Text>
-        <Text textAlign="center">
-          2023-2025 © Kementerian Komunikasi dan Informatika RI.
+        <Text textAlign="center" fontWeight={'bold'}>
+          2023 © KKN UNSIKA 2023.
         </Text>
       </Flex>
     </>

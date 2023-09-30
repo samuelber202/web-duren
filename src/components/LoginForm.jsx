@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, FormControl, Input, Stack } from '@chakra-ui/react';
 import { login } from '../config/redux/actions/loginAction';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +11,30 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
+
   const handleLogin = async () => {
-    const res =  await dispatch(login(email, password)).catch(err=>err);
-    res ? navigate('/dashboard') : console.log('failed')
+    try {
+      dispatch({ type: 'CHANGE_LOADING', value: true });
+  
+      const res = await dispatch(login(email, password));
+  
+      if (res) {
+        dispatch({ type: 'LOGIN', value: true });
+  
+        navigate('/dashboard');
+      } else {
+        console.log('Login failed');
+      }
+    } catch (error) {
+      console.log('Login error:', error.message);
+    }
   };
+
+  // useEffect(()=>{
+  //   if(token){
+  //     navigate('/dashboard')
+  //   }
+  // },[token, navigate])
 
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendBaseTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import "./globals.css";
 import { Provider } from "react-redux";
