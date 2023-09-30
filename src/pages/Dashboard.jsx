@@ -1,16 +1,15 @@
-import React from 'react'
-import DashboardLayout from '../components/layouts/DashboardLayout'
-import Sidebar from '../components/Sidebar'
-import PageLayout from '../components/layouts/pageLayout'
+import React from "react";
+import DashboardLayout from "../components/layouts/DashboardLayout";
+import Sidebar from "../components/Sidebar";
 
 function Dashboard() {
   return (
-    <>
-    <DashboardLayout>
-    <Sidebar/>
-    </DashboardLayout>
-    </>
-  )
+    <section>
+      <DashboardLayout>
+        <Sidebar />
+      </DashboardLayout>
+    </section>
+  );
 }
 
-export default Dashboard
+export default Dashboard;

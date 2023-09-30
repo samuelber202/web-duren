@@ -1,16 +1,21 @@
-import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box } from "@chakra-ui/react";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
 // eslint-disable-next-line react/prop-types
 function PageLayout({ children }) {
   return (
-    <Box
-      maxW="100%"
-      mx="auto"
-      px={{ base: '16px', md: '60px' }} // Adjust the padding for different screen sizes
-    >
-      {children}
-    </Box>
+    <>
+      <Box
+        maxW="100%"
+        mx="auto"
+        px={{ base: "16px", md: "60px" }} // Adjust the padding for different screen sizes
+      >
+        <Navbar />
+        {children}
+      </Box>
+      <Footer />
+    </>
   );
 }
 

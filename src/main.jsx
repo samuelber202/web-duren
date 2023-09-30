@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./globals.css";
 import { Provider } from "react-redux";
 import store from "./config/redux/store.js";
+import "./globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
