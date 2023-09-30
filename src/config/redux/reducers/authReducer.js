@@ -1,8 +1,8 @@
 const token = localStorage.getItem('userToken')
 const initialState = {
-    isLoading: null,
+    isLoading: false,
     isLogin: !!token,
-    token:null
+    token:null,
   };
   
   const authReducer = (state = initialState, action) => {
@@ -13,6 +13,7 @@ const initialState = {
           ...state,
           isLogin: action.value,
         };
+      
         case 'CHANGE_LOADING':
         return {
           ...state,

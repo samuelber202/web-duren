@@ -1,22 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'; // Assuming you're using Redux for authentication state
 import Login from './pages/Login';
-import Dashboard from './components/Dashboard';
-import { useEffect } from 'react';
 import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import DashboardLayout from './components/layouts/DashboardLayout';
 
 function App() {
-  const dispatch = useDispatch();
-
-  const isLogin = useSelector((state) => state.auth.isLogin);
-  const token = useSelector((state) => state.auth.token);
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("userToken");
-    if (storedToken !== token) {
-      dispatch({ type: "LOGOUT", payload: false });
-    }
-  }, [dispatch, token]);
+  
+  const isUserAuthenticated = localStorage.getItem('zxc9238[0]-2Token')
   return (
     <main>
       <Routes>
@@ -24,7 +14,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route
           path="/dashboard"
-          element={isLogin ? <Dashboard /> : <Navigate to="/login" />}
+          element={ isUserAuthenticated ?  <Dashboard/>
+           
+           : <Navigate to="/login" />}
         />
       </Routes>
     </main>
