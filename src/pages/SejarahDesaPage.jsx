@@ -1,22 +1,16 @@
-import { Box, Heading, Text, Image } from "@chakra-ui/react";
-import PageLayout from "../components/layouts/PageLayout";
+import { Box, Text, Image } from "@chakra-ui/react";
+import AboutLayout from "../components/layouts/AboutLayout";
 
 const SejarahDesaPage = () => {
   return (
     <section>
-      <PageLayout>
-        <Box py="10">
-          <Heading
-            fontWeight="bold"
-            color="primary.800"
-            textAlign="center"
-            textTransform={"uppercase"}
-            fontSize="4xl"
-          >
-            sejarah desa
-          </Heading>
-        </Box>
-        <Box backgroundColor="white" p={8} borderRadius="10px 10px 0 0">
+      <AboutLayout title="sejarah desa">
+        <Box
+          transform="translateY(-40px)"
+          backgroundColor="white"
+          p={8}
+          borderRadius="10px 10px 0 0"
+        >
           <Text textAlign="justify">
             <Image
               float={"left"}
@@ -73,7 +67,7 @@ const SejarahDesaPage = () => {
             commodi voluptatibus amet fuga nihil, soluta
           </Text>
         </Box>
-      </PageLayout>
+      </AboutLayout>
     </section>
   );
 };

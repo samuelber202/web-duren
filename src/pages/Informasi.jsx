@@ -1,17 +1,15 @@
-import React from 'react'
-import PageLayout from '../components/layouts/pageLayout'
-import GrayBox from '../components/GrayBox'
-import GoogleMap from '../components/Maps'
+import React from "react";
+import AboutLayout from "../components/layouts/AboutLayout";
+import GoogleMap from "../components/Maps";
 
 function Informasi() {
   return (
     <section>
-      <GrayBox/>
-    <PageLayout>
-      <GoogleMap/>
-    </PageLayout>
+      <AboutLayout title={"INFORMASI & PETA"}>
+        <GoogleMap />
+      </AboutLayout>
     </section>
-  )
+  );
 }
 
-export default Informasi
+export default Informasi;

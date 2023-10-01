@@ -4,12 +4,7 @@ import InformationTable from "./InformationTable";
 const GoogleMap = () => {
   return (
     <section>
-      
-      <Text mt={20} fontWeight="bold" textAlign="center" fontSize="2xl">
-        INFORMASI & PETA
-      </Text>
-
-      <Flex direction={["column", "column", "row"]} mt={20} alignItems="center">
+      <Flex direction={["column", "column", "row"]} alignItems="center">
         <Box flex={["1", "1", "2"]} mt={10} mb={[5, 5, 0]}>
           <Box
             as="iframe"
@@ -25,7 +20,7 @@ const GoogleMap = () => {
           />
         </Box>
 
-        <Flex alignItems={'center'} mt={10} flex="1" p={[2, 5]}>
+        <Flex alignItems={"center"} mt={10} flex="1" p={[2, 5]}>
           <InformationTable />
         </Flex>
       </Flex>

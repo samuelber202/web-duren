@@ -1,29 +1,19 @@
-import { Heading, Box, Grid } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import KegiatanPageCard from "../components/KegiatanPageCard";
-import PageLayout from "../components/layouts/PageLayout";
+import AboutLayout from "../components/layouts/AboutLayout";
 
 const KegiatanWargaPage = () => {
   return (
     <section>
-      <PageLayout>
-        <Box py="10">
-          <Heading
-            fontWeight="bold"
-            color="primary.800"
-            textAlign="center"
-            textTransform={"uppercase"}
-            fontSize="4xl"
-          >
-            kegiatan warga
-          </Heading>
-        </Box>
+      <AboutLayout title={"kegiatan warga"}>
         <Grid
+          transform="translateY(-40px)"
           templateColumns={{
             base: "repeat(1, 1fr)",
             md: "repeat(3, 1fr)",
             lg: "repeat(3, 1fr)",
           }}
-          gap={6}
+          gap={10}
           justifyItems={"center"}
         >
           {Array(6)
@@ -39,7 +29,7 @@ const KegiatanWargaPage = () => {
               />
             ))}
         </Grid>
-      </PageLayout>
+      </AboutLayout>
     </section>
   );
 };
