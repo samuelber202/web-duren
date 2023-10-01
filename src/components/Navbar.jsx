@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Spacer,
-  Link,
   Heading,
   IconButton,
   Drawer,
@@ -13,6 +12,7 @@ import {
   DrawerBody,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,9 +22,9 @@ function Navbar() {
   };
 
   return (
-    <Box p={6} color="black">
+    <Box p={6} bgColor={'white'} color="black">
       <Flex alignItems="center">
-        <Link as="a" href="/home" _hover={{ textDecoration: "none" }}>
+        <Link as="a" to="/" _hover={{ textDecoration: "none" }}>
           <Flex alignItems="center">
             <img src="/images/logo.png" width="30px" alt="" />
             <Heading fontWeight="bold" size="sm" ml={2}>
@@ -36,10 +36,9 @@ function Navbar() {
           </Flex>
         </Link>
         <Spacer />
-        <Flex display={{ base: "none", md: "flex" }}>
+        <Flex gap={10} display={{ base: "none", md: "flex" }}>
           <Link
-            href="/home"
-            mr={6}
+            to="/"
             color="black"
             _hover={{
               transform: "scale(1.2)",
@@ -50,7 +49,7 @@ function Navbar() {
           </Link>
           <Link
             mr={6}
-            href="/kegiatan-warga"
+            to="/kegiatan-warga"
             color="black"
             _hover={{
               transform: "scale(1.2)",
@@ -60,32 +59,32 @@ function Navbar() {
             Kegiatan
           </Link>
           <Link
-            mr={6}
             color="black"
             _hover={{
               transform: "scale(1.2)",
               transition: "transform 0.2s ease-in-out",
             }}
+            to={"/umkm"}
           >
             UMKM
           </Link>
           <Link
-            mr={6}
             color="black"
             _hover={{
               transform: "scale(1.2)",
               transition: "transform 0.2s ease-in-out",
             }}
+            to={"/informasi"}
           >
             Informasi
           </Link>
           <Link
-            href="/tentang-desa"
             color="black"
             _hover={{
               transform: "scale(1.2)",
               transition: "transform 0.2s ease-in-out",
             }}
+            to={"/tentang-desa"}
           >
             Tentang Desa
           </Link>
@@ -129,8 +128,8 @@ function Navbar() {
                 mb={4}
                 fontWeight={"bold"}
                 color="black"
-                _hover={{ textDecoration: "none" }}
-              >
+            
+>
                 Kegiatan
               </Link>
               <Link
