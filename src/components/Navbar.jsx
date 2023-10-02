@@ -22,7 +22,9 @@ function Navbar() {
   };
 
   return (
+
     <Box p={6} color="black">
+
       <Flex alignItems="center">
         <Link as="a" to="/" _hover={{ textDecoration: "none" }}>
           <Flex alignItems="center">
@@ -115,7 +117,7 @@ function Navbar() {
               h="100%"
             >
               <Link
-                href="/home"
+                to="/"
                 mb={4}
                 fontWeight={"bold"}
                 color="black"
@@ -124,12 +126,11 @@ function Navbar() {
                 Home
               </Link>
               <Link
-                href="/kegiatan-warga"
+                to="/kegiatan-warga"
                 mb={4}
                 fontWeight={"bold"}
                 color="black"
-            
->
+              >
                 Kegiatan
               </Link>
               <Link
@@ -140,6 +141,7 @@ function Navbar() {
                 UMKM
               </Link>
               <Link
+                to="/informasi"
                 color="black"
                 fontWeight={"bold"}
                 _hover={{ textDecoration: "none" }}
@@ -147,7 +149,7 @@ function Navbar() {
                 Informasi
               </Link>
               <Link
-                href="/tentang-desa"
+                to="/tentang-desa"
                 color="black"
                 fontWeight={"bold"}
                 _hover={{ textDecoration: "none" }}
