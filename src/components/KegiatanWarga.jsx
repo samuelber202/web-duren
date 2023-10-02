@@ -18,14 +18,14 @@ function KegiatanWarga() {
       <Box p={4}>
         <Flex justifyContent={"space-around"} flexWrap="wrap">
           <KegiatanCard
-            title="Card 1"
-            description="This is the first card description."
+            title="Minggon"
+            description="Kegiatan rapat desa mingguan."
             date="23/09/2023"
             imageUrl="https://via.placeholder.com/150"
           />
           <KegiatanCard
-            title="Card 2"
-            description="This is the second card description."
+            title="Posyandu"
+            description="Kegiatan pengecekan kesehatan anak di usia dini"
             date="23/09/2023"
             imageUrl="https://via.placeholder.com/150"
           />

@@ -1,7 +1,16 @@
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import InformationTable from "./InformationTable";
+import { useEffect, useState } from "react";
 
 const GoogleMap = () => {
+  const [ready, setReady] = useState(false)
+  const map = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31721.626246978947!2d107.3514653355555!3d-6.36773339062274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69741b596ed13b%3A0x9389ac471604a46c!2sDuren%2C%20Kec.%20Klari%2C%20Karawang%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1696049802670!5m2!1sid!2sid"
+  useEffect(()=>{
+    if(map === null){
+      setReady(true)
+    }
+  }, [])
+  console.log(map);
   return (
     <section>
       

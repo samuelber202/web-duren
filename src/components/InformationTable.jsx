@@ -23,7 +23,7 @@ function InformationTable() {
             Tipologi
           </Th>
           <Td>:</Td>
-          <Td>Pertenakan</Td>
+          <Td>Peternakan</Td>
         </Tr>
         <Tr>
           <Th width="40%" isNumeric>

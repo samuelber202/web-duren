@@ -14,7 +14,7 @@ const GaleriSlider = () => {
     { url: '/images/ebeh.png', title: 'Image 4' },
     { url: '/images/ebeh.png', title: 'Image 5' },
   ];
-  const [currentSlide, setCurrentSlide] = useState(Math.floor(images.length / 2)); // Initialize with the middle slide
+  const [currentSlide, setCurrentSlide] = useState(Math.floor(images.length / 2)); 
 
   
   useEffect(() => {
@@ -27,7 +27,6 @@ const GaleriSlider = () => {
     centerPadding: '0',
     slidesToShow: 3,
     speed: 500,
-    focusOnSelect: true,
   };
 
   const goToPrevSlide = () => {
