@@ -22,7 +22,9 @@ function Navbar() {
   };
 
   return (
-    <Box p={6} bgColor={"white"} color="black">
+
+    <Box p={6} color="black">
+
       <Flex alignItems="center">
         <Link as="a" to="/" _hover={{ textDecoration: "none" }}>
           <Flex alignItems="center">

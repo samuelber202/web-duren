@@ -45,7 +45,13 @@ const Carousel = () => {
           </Box>
         </Box>
         <Box>
-          <Image src="image2.jpg" alt="Image 2" />
+          {/* <Image
+            style={{ filter: "grayscale(30%)" }}
+            height="350px"
+            width="100%"
+            src="/images/sosialisasi.webp"
+            alt="Image 1"
+        /> */}
         </Box>
         <Box>
           <Image src="image3.jpg" alt="Image 3" />

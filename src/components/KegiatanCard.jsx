@@ -11,7 +11,7 @@ function KegiatanCard({ title, description, imageUrl, date }) {
       boxShadow="md"
       p={4}
       marginBottom={4}
-      width={{ base: "100%", md: "400px" }} // Set fixed width for larger screens
+      width={{ base: "100%", md: "400px" }} 
       display={{ md: "flex" }}
     >
       <Box
@@ -26,7 +26,6 @@ function KegiatanCard({ title, description, imageUrl, date }) {
           alt={title}
           maxW={{ base: "100%", md: "200px" }}
         />{" "}
-        {/* Responsive image width */}
       </Box>
       <Box flex={{ base: 1, md: 2 }}>
         <Text fontWeight="bold" fontSize={{ base: "xl", md: "2xl" }} mb={2}>
