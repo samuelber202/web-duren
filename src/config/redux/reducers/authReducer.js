@@ -3,15 +3,21 @@ const initialState = {
     isLoading: false,
     isLogin: !!token,
     token:null,
+    message:null
   };
   
   const authReducer = (state = initialState, action) => {
-    console.log(state);
     switch (action.type) {
       case 'LOGIN':
         return {
           ...state,
           isLogin: action.value,
+        };
+      
+        case 'ERR_MESSAGE':
+        return {
+          ...state,
+          message: action.value,
         };
       
         case 'CHANGE_LOADING':

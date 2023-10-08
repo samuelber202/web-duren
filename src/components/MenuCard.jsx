@@ -1,55 +1,58 @@
-import { Flex, Text } from '@chakra-ui/react'
-import React from 'react'
-import Card from './Card'
-import { CalendarIcon, SunIcon } from '@chakra-ui/icons'
-
+import { Box, Flex, Img, Text } from "@chakra-ui/react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function MenuCard() {
   return (
     <>
-    
-    <Text
-        mt={10}
-        fontSize={"2xl"}
-        fontWeight={"bold"}
-        textAlign={"center"}
-        mb={5}
+      <Flex
+        justifyContent="space-around"
+        flexDirection={{ base: "column", md: "row" }}
+        gap={{ base: 5, md: 20 }}
+        align={{ base: "center", md: "flex-start" }}
+        mb={20}
+        mt={"-8px"}
+        p={5}
+        color={"#1B98E0"}
+        backgroundColor={"gray.100"}
       >
-MENU
-      </Text>
-    
- <Flex
-          justifyContent="center"
-          flexDirection={{ base: 'column', md: 'row' }}
-          gap={{ base: 5, md: 10 }}
-          align={{ base: 'center', md: 'flex-start' }} 
-          mb={10}
-      >
-         
-          <Card
-            title="Sejarah Desa"
-            description="This is the first card."
-            icon={<CalendarIcon/>}
-          />
-          <Card
-            title="Kegiatan"
-            description="This is the second card."
-            icon={<SunIcon/>}
-          />
-          <Card
-            title="Bisnis"
-            description="This is the second card."
-            icon={'sd'}
-/>
-          <Card
-            title="Card 2"
-            description="This is the second card."
-            imageUrl="https://example.com/card2.jpg"
-          />
-          {/* Add more Card components as needed */}
-        </Flex>
+        <Link to={"/umkm"} className="menu__link">
+          <Flex flexDirection={"column"} textAlign="center">
+            <Img
+              mx="auto"
+              src="/images/pengumuman.png"
+              width={70}
+              height={50}
+            />
+            <Text mt={2} fontWeight="600">
+              Pengumuman
+            </Text>
+          </Flex>
+        </Link>
+        <Link to={"/informasi"} className="menu__link">
+          <Flex flexDirection={"column"} textAlign="center">
+            <Img
+              mx={"auto"}
+              src="/images/information.png"
+              width={70}
+              height={50}
+            />
+            <Text mt={2} fontWeight="600">
+              Informasi & Lokasi
+            </Text>
+          </Flex>
+        </Link>
+        <Link to={"/kegiatan-warga"} className="menu__link">
+          <Flex flexDirection={"column"} textAlign="center">
+            <Img src="/images/services.svg" width={90} height={50} />
+            <Text mt={2} fontWeight="600">
+              Kegiatan
+            </Text>
+          </Flex>
+        </Link>
+      </Flex>
     </>
-  )
+  );
 }
 
-export default MenuCard
+export default MenuCard;

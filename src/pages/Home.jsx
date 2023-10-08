@@ -1,22 +1,34 @@
 import React from "react";
 import Carousel from "../components/Carousel";
 import PageLayout from "../components/layouts/PageLayout";
-import Card from "../components/Card";
-import { Flex } from "@chakra-ui/react";
 import MenuCard from "../components/MenuCard";
-import GoogleMap from "../components/Maps";
 import KegiatanWarga from "../components/KegiatanWarga";
 import GaleriSlider from "../components/GaleriSlider";
+import HomePageLayout from "../components/layouts/HomePageLayout";
+import Navbar from "../components/Navbar";
+import { Divider, Flex, useBreakpointValue } from "@chakra-ui/react";
+import Pengumuman from "../components/Pengumuman";
 
 function Home() {
+  const isMobile = useBreakpointValue({ base: true, sm: false });
+
   return (
     <section>
-      <PageLayout>
-        <Carousel />
-        <MenuCard />
-        <KegiatanWarga />
+      <Navbar />
+      <Carousel />
+      <MenuCard />
+      <HomePageLayout>
+        <Flex
+          flexDirection={isMobile ? "column" : "row"}
+          gap={5}
+          mt={'-60px'}
+        >
+          <KegiatanWarga />
+          <Pengumuman />
+        </Flex>
+
         <GaleriSlider />
-      </PageLayout>
+      </HomePageLayout>
     </section>
   );
 }

@@ -11,6 +11,10 @@ function Login() {
         justifyContent="center"
         alignItems="center"
         minHeight="100vh"
+        bgImage={'/images/kantor_desa.jpeg'}
+        bgPosition={'center'}
+        bgSize={'cover'}
+        bgRepeat={'no-repeat'}
       >
         <Container>
           <LoginForm />

@@ -1,12 +1,12 @@
 import React from "react";
 import DashboardLayout from "../components/layouts/DashboardLayout";
-import Sidebar from "../components/Sidebar";
+import CardWithLinks from "../components/CardWithLink";
 
 function Dashboard() {
   return (
     <section>
-      <DashboardLayout>
-        <Sidebar />
+      <DashboardLayout heading='Dashboard Admin'>
+      <CardWithLinks/>
       </DashboardLayout>
     </section>
   );

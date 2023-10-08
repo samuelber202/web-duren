@@ -22,12 +22,12 @@ function Navbar() {
   };
 
   return (
-    <Box p={6} color="black">
+    <Box p={6} color="blue.500" position={'sticky'} top={0} zIndex={99} backgroundColor={"whiteAlpha.900"}>
       <Flex alignItems="center">
         <Link as="a" to="/" _hover={{ textDecoration: "none" }}>
           <Flex alignItems="center">
             <img src="/images/logo.png" width="30px" alt="" />
-            <Heading fontWeight="bold" size="sm" ml={2}>
+            <Heading color={'black'} fontWeight="bold" size="sm" ml={2}>
               <span style={{ display: "block" }}>Desa Duren</span>
               <span style={{ display: "block", fontWeight: "normal" }}>
                 Kabupaten Karawang
@@ -36,7 +36,7 @@ function Navbar() {
           </Flex>
         </Link>
         <Spacer />
-        <Flex gap={10} display={{ base: "none", md: "flex" }}>
+        <Flex gap={10} fontWeight={'bold'} display={{ base: "none", md: "flex" }}>
           <Link
             to="/"
             color="black"
@@ -64,9 +64,9 @@ function Navbar() {
               transform: "scale(1.2)",
               transition: "transform 0.2s ease-in-out",
             }}
-            to={"/umkm"}
+            to={"/statistik"}
           >
-            UMKM
+            Statistik
           </Link>
           <Link
             color="black"

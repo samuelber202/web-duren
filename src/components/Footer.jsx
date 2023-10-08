@@ -29,15 +29,12 @@ const Footer = () => {
           >
             Profil
           </Text>
-          <Text
-            fontSize={14}
-          
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            porro reprehenderit eligendi sint eos rerum facilis enim iusto animi
-            dignissimos deserunt consequuntur beatae, placeat quae dolore fugiat,
-            minima fuga corporis possimus adi...
-          </Text>
+          <Text fontSize={14} textAlign={'justify'}>
+ <span style={{ fontWeight:'bold' }}> Desa Duren - Klari </span> <br />
+ <span style={{ fontWeight:'bold' }}>  Kabupaten Karawang - Jawa Barat </span>  <br />
+ <span style={{ textAlign:'justify' }}> Website desa dibangun sebagai bagian dari SISTEM INFORMASI DESA yang berfungsi sebagai portal informasi, transparansi, dan sosialisasi pemerintah terkait tata kelola pembangunan kawasan perdesaan (pembangunan, pembinaan, dan pemberdayaan) yang dirasakan langsung oleh masyarakat sebagai penerima manfaat.</span>
+</Text>
+
           <Link
             fontSize={14}
           
@@ -59,17 +56,9 @@ const Footer = () => {
             fontSize={14}
            
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            porro reprehenderit eligendi sint eos rerum facilis enim iusto animi
-            dignissimos deserunt consequuntur beatae, placeat quae dolore fugiat,
-            minima fuga corporis possimus adi...
+           Jl. Raya Kosambi No.17, RT.1/RW.8, Duren, Kec. Klari, Karawang, Jawa Barat 41371
           </Text>
-          <Link
-            fontSize={14}
-            
-          >
-            Selengkapnya...
-          </Link>
+          
         </Box>
       </Flex>
       </Box>

@@ -2,21 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Box, Image, Text, Flex, Button } from '@chakra-ui/react';
+import { Box, Image, Text, Flex, Button, Divider } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 const GaleriSlider = () => {
   const sliderRef = useRef(null);
   const images = [
-    { url: '/images/ebeh.png', title: 'Image 1' },
-    { url: '/images/ebeh.png', title: 'Image 2' },
+    { url: '/images/posyandu.jpg', title: 'Image 1' },
+    { url: '/images/maulid.jpeg', title: 'Image 2' },
     { url: '/images/ebeh.png', title: 'Image 3' },
     { url: '/images/ebeh.png', title: 'Image 4' },
     { url: '/images/ebeh.png', title: 'Image 5' },
   ];
-  const [currentSlide, setCurrentSlide] = useState(Math.floor(images.length / 2)); 
+  const [currentSlide, setCurrentSlide] = useState(Math.floor(images.length / 2));
 
-  
   useEffect(() => {
     sliderRef.current.slickGoTo(currentSlide);
   }, [currentSlide]);
@@ -38,29 +37,52 @@ const GaleriSlider = () => {
   };
 
   return (
-    <Box>
-    <Text fontWeight={'bold'} textAlign={'center'} fontSize={'2xl'} mt={10} mb={5}>GALERI</Text>
-      <Slider ref={sliderRef} {...settings} initialSlide={currentSlide}>
-        {images.map((image, index) => (
-          <Box key={index} p={2}>
-            <Image
-              src={image.url}
-              alt={`Image ${index}`}
-              opacity={index === currentSlide ? 1 : 0.5}
-              boxShadow={index === currentSlide ? 'lg' : 'none'}
-            />
-          </Box>
-        ))}
-      </Slider>
-      <Flex justifyContent="center" mt={4}>
-        <Button onClick={goToPrevSlide} mr={2}>
-          <ChevronLeftIcon/>
-        </Button>
-        <Button onClick={goToNextSlide}>
-          <ChevronRightIcon/>
-        </Button>
-      </Flex>
-    </Box>
+    <section>
+      <Divider mt="100px" orientation="horizontal" borderWidth="1px" borderColor={'blue.500'} />
+
+      <Box overflow="hidden" maxWidth="800px" margin="0 auto">
+        <Text fontWeight="bold" textAlign="center" fontSize="2xl" mt={10} mb={5}>
+          GALERI
+        </Text>
+        <Slider ref={sliderRef} {...settings} initialSlide={currentSlide}>
+          {images.map((image, index) => (
+            <Box
+              key={index}
+              p={2}
+              style={{
+                width: '300px', // Adjust the width as needed
+                height: '200px', // Adjust the height as needed
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                overflow: 'hidden',
+                borderRadius: '8px', // Add rounded corners for a polished look
+                boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)', // Add a subtle shadow for depth
+              }}
+            >
+              <Image
+                src={image.url}
+                alt={`Image ${index}`}
+                opacity={index === currentSlide ? 1 : 0.5}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+            </Box>
+          ))}
+        </Slider>
+        <Flex justifyContent="center" mt={4}>
+          <Button onClick={goToPrevSlide} mr={2}>
+            <ChevronLeftIcon />
+          </Button>
+          <Button onClick={goToNextSlide}>
+            <ChevronRightIcon />
+          </Button>
+        </Flex>
+      </Box>
+    </section>
   );
 };
 
