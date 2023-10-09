@@ -9,11 +9,11 @@ function Card({ title, description, icon }) {
       borderRadius="lg"
       overflow="hidden"
       boxShadow="lg"
-      mx={2} // Reduce horizontal margin for smaller screens
-      mb={4} // Add vertical margin for spacing between cards
+      mx={2} 
+      mb={4} 
     >
       <Box
-        p="3" // Slightly reduce padding for smaller screens
+        p="3" 
         bg="gray.200"
         display="flex"
         alignItems="center"
@@ -28,13 +28,13 @@ function Card({ title, description, icon }) {
       </Box>
 
       <Box p={{ base: "2", md: "3" }}>
-        <Text mt="2" fontSize="sm"> {/* Reduce font size for smaller screens */}
+        <Text mt="2" fontSize="sm">
           {description}
         </Text>
       </Box>
 
       <Stack
-        p="3" // Slightly reduce padding for smaller screens
+        p="3"
         justifyContent={"center"}
         borderTopWidth="1px"
         borderTopColor="gray.300"
@@ -44,8 +44,8 @@ function Card({ title, description, icon }) {
           backgroundColor="#2C285C"
           size="sm"
           color="white"
-          fontSize="sm" // Reduce font size for smaller screens
-          paddingX="4" // Increase horizontal padding for better touch targets
+          fontSize="sm"
+          paddingX="4" 
         >
           Lihat Selengkapnya
         </Button>

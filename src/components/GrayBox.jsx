@@ -8,7 +8,7 @@ function GrayBox() {
       <Box
         width="100%"
         position="absolute"
-        bg="#E4E6EB"
+        bg="#E8F1F2"
         height={'300px'}
         zIndex={'-99'}
         color="white"

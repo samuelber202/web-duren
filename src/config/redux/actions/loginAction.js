@@ -12,7 +12,7 @@ export const login = (email, password) => (dispatch) => {
         console.log(res.user.email);
         dispatch({ type: "LOGIN", value: true });
         dispatch({ type: "CHANGE_TOKEN", value: res._tokenResponse.idToken });
-
+        dispatch({ type: "CHANGE_LOADING", value: true });
         const tokenData = {
           token: res._tokenResponse.idToken,
           email: res.user.email,
@@ -23,10 +23,10 @@ export const login = (email, password) => (dispatch) => {
 
         resolve(true);
       })
-      .catch((err) => {
-        console.log("failed", err.message);
+      .catch(() => {
         dispatch({ type: "LOGIN", value: false });
-        dispatch({ type: "CHANGE_LOADING", value: true });
+        dispatch({ type: "CHANGE_LOADING", value: false });
+        dispatch({ type: "ERR_MESSAGE", value:"Email / Password Salah"})
         reject(false);
       });
   });

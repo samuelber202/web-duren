@@ -1,14 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import GrayBox from "../GrayBox";
 
 // eslint-disable-next-line react/prop-types
-function PageLayout({ children }) {
+function HomePageLayout({ children }) {
   return (
     <>
-    <GrayBox/>
-    <Navbar />
       <Box
         maxW="100%"
         mx="auto"
@@ -20,4 +17,4 @@ function PageLayout({ children }) {
   );
 }
 
-export default PageLayout;
+export default HomePageLayout;

@@ -1,36 +1,36 @@
 import React from "react";
 import KegiatanCard from "./KegiatanCard";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 function KegiatanWarga() {
   return (
-    <>
+    <Flex flexDirection={'column'} flexGrow={6}>
       <Text
-        mt={10}
-        fontSize={"2xl"}
-        fontWeight={"bold"}
-        textAlign={"center"}
-        mb={5}
-      >
-        KEGIATAN WARGA
-      </Text>
+     fontSize={'2xl'}
+    >
+      Kegiatan <ChevronRightIcon/>
+    </Text>
+    <Divider orientation="horizontal"  borderWidth="1px" borderColor={'blue.500'}/>
+ 
 
-      <Box p={4}>
-        <Flex justifyContent={"space-around"} flexWrap="wrap">
+      <Box>
+        <Flex mt={5} gap={5} flexDirection={"row"} flexWrap="wrap">
           <KegiatanCard
             title="Minggon"
             description="Kegiatan rapat desa mingguan."
             date="23/09/2023"
-            imageUrl="https://via.placeholder.com/150"
+            imageUrl="/images/minggon.jpg"
           />
           <KegiatanCard
-            title="Posyandu"
-            description="Kegiatan pengecekan kesehatan anak di usia dini"
-            date="23/09/2023"
-            imageUrl="https://via.placeholder.com/150"
+            title="Pembukaan Posyandu Cempaka"
+            description="Selasa, 3 Oktober 2023 diresmikan pembukaan posyandu cempaka"
+            date="03/10/2023"
+            imageUrl="/images/posyandu.png"
           />
         </Flex>
-        <Flex justifyContent={"space-around"} flexWrap="wrap">
+        <Flex mt={5} gap={5} flexDirection={"row"} flexWrap="wrap">
           <KegiatanCard
             title="Card 1"
             description="This is the first card description."
@@ -45,12 +45,14 @@ function KegiatanWarga() {
           />
         </Flex>
         <Flex justifyContent={"center"} mt={5}>
+          <Link to={'/kegiatan-warga'}>
           <Button borderRadius={"md"}>
             <Text>Lihat Selengkapnya</Text>
           </Button>
+          </Link>
         </Flex>
       </Box>
-    </>
+    </Flex>
   );
 }
 

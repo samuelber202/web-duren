@@ -1,17 +1,18 @@
-import { Box, Text, Image } from "@chakra-ui/react";
+import { Box, Text, Image, Link as ChakraLink } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
-function KegiatanCard({ title, description, imageUrl, date }) {
+function KegiatanCard({ title, link, imageUrl, date }) {
   return (
     <Box
       borderWidth="1px"
       borderRadius="lg"
-      backgroundColor={"#2C285C"}
+      backgroundColor={"#13293D"}
       overflow="hidden"
       color={"white"}
       boxShadow="md"
       p={4}
       marginBottom={4}
-      width={{ base: "100%", md: "400px" }} 
+      width={{ base: "100%", md: "400px" }}
       display={{ md: "flex" }}
     >
       <Box
@@ -24,19 +25,23 @@ function KegiatanCard({ title, description, imageUrl, date }) {
         <Image
           src={imageUrl}
           alt={title}
-          maxW={{ base: "100%", md: "200px" }}
-        />{" "}
+          width={150}
+          height={150}
+          aspectRatio="1"
+          maxW={{ base: "150px", md: "200px" }}
+          objectFit="cover"
+        />
       </Box>
       <Box flex={{ base: 1, md: 2 }}>
-        <Text fontWeight="bold" fontSize={{ base: "xl", md: "2xl" }} mb={2}>
+        <Text fontWeight="bold" fontSize={{ base: "md", md: "xl" }} mb={2}>
           {title}
-        </Text>
-        <Text fontSize={{ base: "md", md: "lg" }} color="white">
-          {description}
         </Text>
         <Text fontSize="sm" color="gray.600">
           {date}
         </Text>
+        <ChakraLink as={Link} to={link} fontSize={{ base: "xs", md: "xs" }} color="white">
+          Selengkapnya...
+        </ChakraLink>
       </Box>
     </Box>
   );

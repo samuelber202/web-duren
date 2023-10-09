@@ -3,3 +3,10 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+.menu__link{
+  transition: transform 0.3s ease; 
+}
+.menu__link:hover{
+  transform: scale(1.2);
+  font-weight: bold;
+}
