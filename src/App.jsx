@@ -19,7 +19,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/tentang-desa" element={<SejarahDesaPage />} />
         <Route path="/informasi" element={<Informasi />} />
-        <Route path="/statistik" element={<Statistik />} />
+        <Route path="/statistik">
+        <Route
+            index element={<Statistik />} 
+          />
+      
+
+        </Route>
 
         <Route path="/dashboard">
           <Route

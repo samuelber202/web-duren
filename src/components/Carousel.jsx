@@ -10,7 +10,6 @@ const Carousel = () => {
   const [isSmallerScreen] = useMediaQuery("(max-width: 768px)");
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 1000,
     autoplay: true,
