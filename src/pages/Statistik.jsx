@@ -43,35 +43,35 @@ function Statistik() {
             flexDirection={{ base:'column', md:'row' }}
           >
             <Button
-              colorScheme={activeChart === 1 ? 'blue' : 'gray'}
+              colorScheme={activeChart === 1 ? 'facebook' : 'blue'}
               onClick={() => setActiveChart(1)}
               mb={2}
             >
               Agama
             </Button>
             <Button
-              colorScheme={activeChart === 2 ? 'blue' : 'gray'}
+              colorScheme={activeChart === 2 ? 'facebook' : 'blue'}
               onClick={() => setActiveChart(2)}
               mb={2}
             >
               Kesehatan
             </Button>
             <Button
-              colorScheme={activeChart === 3 ? 'blue' : 'gray'}
+              colorScheme={activeChart === 3 ? 'facebook' : 'blue'}
               onClick={() => setActiveChart(3)}
               mb={2}
             >
-              Lulus
+              Pendidikan
             </Button>
             <Button
-              colorScheme={activeChart === 4 ? 'blue' : 'gray'}
+              colorScheme={activeChart === 4 ? 'facebook' : 'blue'}
               onClick={() => setActiveChart(4)}
               mb={2}
             >
               Sekolah
             </Button>
             <Button
-              colorScheme={activeChart === 5 ? 'blue' : 'gray'}
+              colorScheme={activeChart === 5 ? 'facebook' : 'blue'}
               onClick={() => setActiveChart(5)}
             >
               Pekerjaan

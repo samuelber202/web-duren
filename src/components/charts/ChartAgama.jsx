@@ -4,7 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 import exportingInit from "highcharts/modules/exporting";
 import exportDataInit from "highcharts/modules/export-data";
 import Highcharts3D from "highcharts/highcharts-3d"; // Import Highcharts 3D module
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 // Initialize the exporting, export-data, and 3D modules
 exportingInit(Highcharts);
@@ -39,7 +39,7 @@ const options3D = {
   },
   series: [
     {
-      name: "Agama",
+      name: "Jumlah",
       colorByPoint: true,
       data: [
         { name: "Islam", y: 29385 },
@@ -51,6 +51,9 @@ const options3D = {
       ],
     },
   ],
+  legend: {
+    enabled: true, 
+  },
 };
 
 const optionsBar = {
@@ -70,16 +73,25 @@ const optionsBar = {
       "Konghucu",
     ],
   },
-  yAxis: {
-   
-  },
+  yAxis: {},
   series: [
     {
       name: "Jumlah",
       data: [29385, 54, 164, 455, 540, 39],
     },
   ],
+  legend: {
+    enabled: true, 
+  },
 };
+const tableData = [
+    { name: "Islam", y: 29385 },
+    { name: "Budha", y: 54 },
+    { name: "Hindu", y: 164 },
+    { name: "Katolik", y: 455 },
+    { name: "Kristen", y: 540 },
+    { name: "Konghucu", y: 39 },
+  ];
 
 function ChartAgama() {
   const [chartOptions, setChartOptions] = useState(options3D);
@@ -94,11 +106,31 @@ function ChartAgama() {
 
   return (
     <>
-    <Flex justifyContent={'center'} gap={5}>
-      <Button colorScheme="facebook" onClick={switchTo3D}>3D Pie Chart</Button>
-      <Button colorScheme="facebook" onClick={switchToBar}>Bar Chart</Button>
+      <Flex justifyContent={"center"} gap={5}>
+        <Button colorScheme="linkedin" onClick={switchTo3D}>
+          3D Pie Chart
+        </Button>
+        <Button colorScheme="linkedin" onClick={switchToBar}>
+          Bar Chart
+        </Button>
       </Flex>
       <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+      <Table variant="striped" colorScheme="blue" size="sm">
+        <Thead>
+          <Tr>
+            <Th>Agama</Th>
+            <Th>Jumlah</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {tableData.map((dataItem, index) => (
+            <Tr key={index}>
+              <Td>{dataItem.name}</Td>
+              <Td>{dataItem.y}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     </>
   );
 }
