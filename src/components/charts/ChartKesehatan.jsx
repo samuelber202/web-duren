@@ -4,7 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 import exportingInit from "highcharts/modules/exporting";
 import exportDataInit from "highcharts/modules/export-data";
 import Highcharts3D from "highcharts/highcharts-3d"; // Import Highcharts 3D module
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 // Initialize the exporting, export-data, and 3D modules
 exportingInit(Highcharts);
@@ -39,7 +39,7 @@ const options3D = {
   },
   series: [
     {
-      name: "Sarana Kesehatan",
+      name: "Jumlah",
       colorByPoint: true,
       data: [
     
@@ -52,6 +52,8 @@ const options3D = {
     },
   ],
 };
+
+
 
 const optionsBar = {
   chart: {
@@ -77,6 +79,14 @@ const optionsBar = {
     },
   ],
 };
+const tableData =  [
+    
+    { name: 'Posyandu', y: 2 },
+    { name: 'Puskesmas', y: 1 },
+    { name: 'Rumah Bersalin', y: 10 },
+  
+  
+]
 
 function ChartAgama() {
   const [chartOptions, setChartOptions] = useState(options3D);
@@ -92,10 +102,26 @@ function ChartAgama() {
   return (
     <>
     <Flex justifyContent={'center'} gap={5}>
-      <Button colorScheme="facebook" onClick={switchTo3D}>3D Pie Chart</Button>
-      <Button colorScheme="facebook" onClick={switchToBar}>Bar Chart</Button>
+      <Button colorScheme="linkedin" onClick={switchTo3D}>3D Pie Chart</Button>
+      <Button colorScheme="linkedin" onClick={switchToBar}>Bar Chart</Button>
       </Flex>
       <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+      <Table variant="striped" colorScheme="blue" size="sm">
+        <Thead>
+          <Tr>
+            <Th>Sarana Kesehatan</Th>
+            <Th>Jumlah</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {tableData.map((dataItem, index) => (
+            <Tr key={index}>
+              <Td>{dataItem.name}</Td>
+              <Td>{dataItem.y}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     </>
   );
 }

@@ -1,8 +1,14 @@
 import React from 'react'
+import DashboardLayout from '../components/layouts/DashboardLayout'
+import PengumumanForm from '../components/PengumumanForm'
 
 function PengumumanAdmin() {
   return (
-    <div>PengumumanAdmin</div>
+    <>
+    <DashboardLayout>
+      <PengumumanForm/>
+    </DashboardLayout>
+    </>
   )
 }
 

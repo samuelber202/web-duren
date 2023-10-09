@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, Image, Spacer } from "@chakra-ui/react";
 import PageLayout from "../components/layouts/PageLayout";
 
 const SejarahDesaPage = () => {
@@ -22,55 +22,81 @@ const SejarahDesaPage = () => {
               float={"left"}
               mr={5}
               mb={{ base: 5, md: 0, sm: 5 }}
-              src="/images/sejarah-desa.png"
+              width={"50%"}
+              src="/images/sejarah-desa.jpeg"
             />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-            modi laudantium, voluptas fuga mollitia ipsum sit aliquam id?
-            Provident accusantium laboriosam optio recusandae ratione sunt ad
-            nemo velit natus, pariatur sequi ea mollitia debitis illo, laborum
-            aut doloremque quod deserunt. Quia quod cumque in quaerat aperiam
-            reprehenderit explicabo repellat veritatis asperiores, laboriosam
-            minus corrupti sint a laborum est eius nostrum? Autem quidem ratione
-            nemo reprehenderit in aliquid praesentium. Voluptates, sunt, enim
-            excepturi dignissimos error eos nobis necessitatibus magnam deleniti
-            consequuntur eius iste? Ipsam provident a qui fugiat illum. Adipisci
-            soluta aliquam odio voluptatibus incidunt fuga odit id itaque rerum
-            voluptas similique, aperiam nesciunt ea eligendi animi quod quia
-            iusto in quibusdam totam! Temporibus ipsa accusantium minus nobis
-            assumenda laborum illo eaque perspiciatis, vel sint placeat
-            accusamus? Porro placeat accusamus perferendis. Quos nisi molestiae
-            quas consequuntur, incidunt reiciendis illum neque consequatur
-            earum. Magnam odit necessitatibus fuga quisquam inventore quia,
-            accusamus mollitia ipsum unde nesciunt molestiae eos, deserunt
-            perspiciatis ducimus ullam sequi quo. Vel, tempore laborum
-            perspiciatis temporibus labore accusantium corrupti non totam magnam
-            neque repellendus! Nisi et impedit tempore sed beatae ipsa quis
-            dolorum libero perspiciatis pariatur! Quia voluptatibus doloribus
-            voluptate corporis maiores eaque earum nostrum expedita, corrupti
-            error itaque soluta inventore, quisquam ut quasi facere rem qui
-            minima cupiditate assumenda? Molestiae repellendus vero tenetur
-            totam provident. Quos a laborum impedit possimus voluptas, officia
-            corrupti quidem quam corporis dolorem amet atque recusandae? Amet
-            quae vitae optio sit ducimus voluptates explicabo dolor, ipsam
-            debitis eos exercitationem quidem est voluptate reiciendis hic
-            doloribus ea nostrum rem quibusdam recusandae qui. Vel illo, at
-            fugit tempora delectus tenetur! Corrupti eligendi maiores
-            exercitationem, totam nulla doloribus facilis voluptate quaerat quo.
-            Aliquid, voluptates inventore? Totam amet excepturi nesciunt aut
-            minus magnam illum illo corporis sapiente non omnis libero fugit,
-            soluta accusantium tenetur quae atque rerum vitae mollitia
-            architecto itaque, quisquam reprehenderit dicta sequi. Delectus
-            impedit et velit dignissimos adipisci debitis vero suscipit tempora
-            sint ea, modi maiores cupiditate magni accusantium autem, amet quod
-            blanditiis ex aliquam veritatis. Consectetur esse optio ducimus non.
-            Ad ipsam consequuntur vero non animi saepe earum accusantium! In
-            molestias, aspernatur deleniti vitae mollitia delectus nobis culpa
-            esse, distinctio dicta quam fugit beatae fugiat saepe nulla impedit,
-            architecto praesentium obcaecati! Ad, quo. Ea saepe illo esse,
-            molestias fuga sunt corrupti ut officiis dicta dolore natus, velit
-            asperiores reiciendis! Blanditiis quidem necessitatibus rerum minima
-            corporis! Ratione, odio! Odit accusamus maiores, in autem corrupti
-            commodi voluptatibus amet fuga nihil, soluta
+            Desa Duren Klari terletak di Kabupaten Karawang, Jawa Barat, Indonesia. Lebih tepatnya, desa ini terletak di Kecamatan Klari, Kabupaten Karawang, Jawa Barat.
+            Selama bertahun-tahun, desa Duren telah menjadi tempat yang kaya
+            akan keindahan dan kelezatan buah durian. Di sinilah sejarah panjang
+            dan cerita yang menarik dimulai. Di balik nama "Duren" terkandung
+            cerita yang tak terlupakan tentang durian yang manis dan harum.
+          </Text>
+
+          <Text
+            textAlign={"justify"}
+            mt={5}
+            mb={5}
+            fontWeight={"bold"}
+            fontSize={"xl"}
+          >
+            Asal Usul Nama "Duren"
+          </Text>
+          <Text textAlign={"justify"}>
+            Nama "Duren" berasal dari buah yang kita semua kenal dengan baik,
+            yaitu durian. Sejarahnya bermula dari kecintaan penduduk desa Duren
+            terhadap buah durian yang begitu lezat. Setiap rumah di sini hampir
+            selalu memiliki kebun atau lahan darat, dan hampir semua dari mereka
+            menanam pohon durian. Bahkan, ada yang memiliki hingga 10 pohon
+            durian di kebun mereka. Embah Kadi B. Ucan(Alm), salah satu tokoh di
+            desa ini, memiliki tanah yang sekarang menjadi bagian dari jalan
+            tol Jakarta-Cikampek. Tanah ini dulunya merupakan ladang durian yang
+            menghasilkan buah dengan rasa manis dan harum yang terkenal. Itulah
+            sebabnya, pada tahun 1930, saat seorang Kepala Desa bernama Katar
+            memutuskan untuk memberikan nama desa ini, "Duren" menjadi pilihan
+            yang sempurna.
+            <Image
+              float={"right"}
+              ml={5}
+              mb={{ base: 5, md: 0, sm: 5 }}
+              width={"50%"}
+              src="/images/pohon-durian.jpeg"
+            />
+            <Text
+              textAlign={"justify"}
+              mt={5}
+              mb={5}
+              fontWeight={"bold"}
+              fontSize={"xl"}
+            >
+              Kesenangan Masyarakat Duren dalam Budidaya Durian
+            </Text>
+          </Text>
+          <Text textAlign={"justify"}>
+            desa Duren adalah tempat yang diisi dengan kehidupan masyarakat
+            yang selalu bersemangat dalam menanam dan merawat pohon durian
+            mereka. Setiap buah durian yang tumbuh di sini adalah buah dari
+            cinta dan perawatan yang tulus dari penduduk setempat. Rasanya yang
+            manis dan harum adalah bukti dari dedikasi mereka dalam menjaga dan
+            memelihara pohon durian.
+          </Text>
+          <Text
+            textAlign={"justify"}
+            mt={5}
+            mb={5}
+            fontWeight={"bold"}
+            fontSize={"xl"}
+          >
+            Ketika Duren Menjadi Nama Desa
+          </Text>
+          <Text textAlign={"justify"}>
+            Pada tahun 1930, saat Kepala Desa Katar memutuskan untuk memberikan
+            nama desa ini, pilihan jatuh pada "Duren." Nama ini dengan bangga
+            diabadikan sebagai warisan sejarah desa ini. Duren bukan hanya
+            tempat yang indah secara alamiah, tetapi juga merupakan rumah bagi
+            buah durian yang menggugah selera. Kisah panjang dan sejarah yang
+            kaya dari tempat ini terus hidup melalui buah yang manis dan harum
+            ini. Semua ini adalah bagian dari pesona unik yang menjadikan desa
+            Duren begitu istimewa.
           </Text>
         </Box>
       </PageLayout>

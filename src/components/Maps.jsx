@@ -6,7 +6,9 @@ const GoogleMap = () => {
   return (
     <section>
       <Flex alignItems={'center'} justifyContent={'center'}>
-     
+      <Text mt={10} mb={5} fontWeight="bold" textAlign="center" fontSize="4xl">
+        INFORMASI & PETA
+      </Text>
       </Flex>
       <Box backgroundColor="white" p={'8'} shadow={'base'} borderRadius="md">
 
