@@ -1,16 +1,17 @@
+// DashboardLayout.js
 import React from 'react';
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import Sidebar from '../Sidebar';
 
-const DashboardLayout = ({ children, heading }) => {
+const DashboardLayout = ({ children }) => {
   return (
-    <Flex flexWrap="wrap">
+    <Flex>
       <Sidebar />
-
-      <Flex flexDir={'column'} flex="1" p="4" ml={{ base: '0', md: '250px' }}>
-        <Heading size="lg" mb={10}>{heading}</Heading>
-        {children}
-      </Flex>
+      <Box flex="1" overflowY="auto">
+        <Flex justifyContent="center" alignItems="center" height="100%">
+          {children}
+        </Flex>
+      </Box>
     </Flex>
   );
 };

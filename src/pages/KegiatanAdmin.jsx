@@ -1,20 +1,19 @@
 import React from 'react'
-import DashboardLayout from '../components/layouts/DashboardLayout';
-import KegiatanForm from '../components/KegiatanForm';
+import DashboardLayout from '../components/layouts/DashboardLayout'
+import PengumumanForm from '../components/PengumumanForm'
+import { Flex } from '@chakra-ui/react'
+import KegiatanForm from '../components/KegiatanForm'
 
-function KegiatanAdmin() {
+function PengumumanAdmin() {
   return (
-    
-        <section>
-      <DashboardLayout heading="Kegiatan">
-        <KegiatanForm/>
-</DashboardLayout>
+    <>
+    <DashboardLayout>
+      <Flex ml={'250px'} justifyContent={'center'} >
+        <KegiatanForm />
+        </Flex>
+    </DashboardLayout>
+    </>
+  )
+}
 
-        </section>
-      );
-    }
-   
-  
-
-
-export default KegiatanAdmin
+export default PengumumanAdmin

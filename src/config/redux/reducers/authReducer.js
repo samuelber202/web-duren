@@ -1,4 +1,6 @@
+
 const token = localStorage.getItem('userToken')
+
 const initialState = {
     isLoading: false,
     isLogin: !!token,
