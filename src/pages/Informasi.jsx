@@ -10,7 +10,6 @@ function Informasi() {
       <GrayBox/>
     <PageLayout>
       <GoogleMap/>
-      <PengumumanList/>
     </PageLayout>
     
     </section>

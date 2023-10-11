@@ -8,7 +8,9 @@ import {
   Heading,
   Input,
   Textarea,
-  CircularProgress, // Import CircularProgress for loading indicator
+  Grid, // Use Grid for the 2-column layout
+  GridItem, // Individual grid items
+  CircularProgress,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -18,6 +20,8 @@ import ChakraAlert from './alerts/ChakraAlert';
 const initialValues = {
   title: '',
   content: '',
+  content1: '',
+  content2: '',
   file: null,
 };
 
@@ -35,7 +39,7 @@ const KegiatanForm = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState('');
   const [alert, setAlert] = useState(null);
-  const [isUploading, setIsUploading] = useState(false); // State for tracking upload status
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     if (image) {
@@ -44,7 +48,7 @@ const KegiatanForm = () => {
   }, [image]);
 
   const uploadImage = () => {
-    setIsUploading(true); // Start loading
+    setIsUploading(true);
     const data = new FormData();
     data.append('file', image);
     data.append('upload_preset', 'tutorial');
@@ -59,7 +63,7 @@ const KegiatanForm = () => {
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        setIsUploading(false); // Stop loading when upload is done
+        setIsUploading(false);
       });
   };
 
@@ -80,7 +84,9 @@ const KegiatanForm = () => {
           const payload = {
             title: values.title,
             content: values.content,
-            author: "Admin Desa",
+            content1: values.content1,
+            content2: values.content2,
+            author: 'Admin Desa',
             image_url: url,
           };
           setAlert(null);
@@ -114,7 +120,8 @@ const KegiatanForm = () => {
             });
           } finally {
             setSubmitting(false);
-            setImage(null); // Clear the image after submission
+            window.scrollTo(0, 0)
+            setImage(null);
           }
         }}
       >
@@ -123,48 +130,95 @@ const KegiatanForm = () => {
             <Box
               mx={'auto'}
               textAlign={'center'}
-              maxW={{ base: '100%', sm: '400px' }}
+              maxW={{ base: '100%', sm: '800px' }}
               p={4}
               boxShadow="lg"
               rounded="md"
             >
               <Heading mb={4} fontSize={{ base: 'xl', sm: '2xl' }}>
-                Tambah Kegiatan Warga
+                Tambah Berita Warga
               </Heading>
 
-              <Field name="title">
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.title && form.touched.title}>
-                    <FormLabel htmlFor="title">Masukkan Judul Kegiatan</FormLabel>
-                    <Input {...field} id="title" placeholder="Masukkan judul artikel" />
-                    <FormErrorMessage>{form.errors.title}</FormErrorMessage>
+              <Grid templateColumns="1fr 1fr" gap={4}>
+                <GridItem colSpan={1}>
+                  <Field name="title">
+                    {({ field, form }) => (
+                      <FormControl
+                        isInvalid={form.errors.title && form.touched.title}
+                      >
+                        <FormLabel htmlFor="title">Masukkan Judul Kegiatan</FormLabel>
+                        <Input {...field} id="title" placeholder="Masukkan judul artikel" />
+                        <FormErrorMessage>{form.errors.title}</FormErrorMessage>
+                      </FormControl>
+                    )}
+                  </Field>
+                </GridItem>
+
+                <GridItem colSpan={1}>
+                  <FormControl isInvalid={url === '' && image === null}>
+                    <FormLabel htmlFor="file">Unggah Gambar</FormLabel>
+                    <Input
+                      type="file"
+                      id="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        setImage(e.target.files[0]);
+                        setFieldValue('file', e.target.files[0]);
+                      }}
+                    />
+                    <FormErrorMessage>Membutuhkan Gambar</FormErrorMessage>
                   </FormControl>
-                )}
-              </Field>
+                </GridItem>
+              </Grid>
 
               <Field name="content">
                 {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.content && form.touched.content}>
-                    <FormLabel htmlFor="content">Masukkan Content</FormLabel>
-                    <Textarea {...field} id="content" rows="5" placeholder="Masukkan artikel disini" />
+                  <FormControl
+                    isInvalid={form.errors.content && form.touched.content}
+                  >
+                    <FormLabel htmlFor="content">Masukkan Paragraph 1</FormLabel>
+                    <Textarea
+                      {...field}
+                      id="content"
+                      rows="5"
+                      placeholder="Masukkan artikel disini"
+                    />
                     <FormErrorMessage>{form.errors.content}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-
-              <FormControl isInvalid={url === '' && image === null}>
-                <FormLabel htmlFor="file">Unggah Gambar</FormLabel>
-                <Input
-                  type="file"
-                  id="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    setImage(e.target.files[0]);
-                    setFieldValue('file', e.target.files[0]);
-                  }}
-                />
-                <FormErrorMessage>Membutuhkan Gambar</FormErrorMessage>
-              </FormControl>
+              <Field name="content1">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.content && form.touched.content}
+                  >
+                    <FormLabel htmlFor="content">Masukkan Paragraph 2</FormLabel>
+                    <Textarea
+                      {...field}
+                      id="content"
+                      rows="5"
+                      placeholder="Masukkan artikel disini"
+                    />
+                    <FormErrorMessage>{form.errors.content}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="content2">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.content && form.touched.content}
+                  >
+                    <FormLabel htmlFor="content">Masukkan Paragraph 3</FormLabel>
+                    <Textarea
+                      {...field}
+                      id="content"
+                      rows="5"
+                      placeholder="Masukkan artikel disini"
+                    />
+                    <FormErrorMessage>{form.errors.content}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
 
               {isUploading && (
                 <CircularProgress
@@ -179,7 +233,7 @@ const KegiatanForm = () => {
               <Button
                 mt={4}
                 colorScheme="teal"
-                isLoading={isSubmitting || isUploading} // Disable button when uploading or submitting
+                isLoading={isSubmitting || isUploading}
                 type="submit"
                 width="100%"
                 isDisabled={!url}

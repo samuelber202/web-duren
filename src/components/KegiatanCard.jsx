@@ -1,7 +1,8 @@
-import { Box, Text, Image, Link as ChakraLink } from "@chakra-ui/react";
+import { CalendarIcon, InfoIcon } from "@chakra-ui/icons";
+import { Box, Text, Image, Link as ChakraLink, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-function KegiatanCard({ title, link, imageUrl, date }) {
+function KegiatanCard({ title, link, imageUrl, date, author }) {
   return (
     <Box
       borderWidth="1px"
@@ -33,7 +34,13 @@ function KegiatanCard({ title, link, imageUrl, date }) {
         />
       </Box>
       <Box flex={{ base: 1, md: 2 }}>
-        <Text fontWeight="bold" fontSize={{ base: "md", md: "xl" }} mb={2}>
+      <Flex float={'right'} alignItems="center">
+              <InfoIcon boxSize={4} color="blue.500" ml="2" mr={'2'} />{" "}
+              <Text fontSize="xs" color="gray.500">
+                {author}
+              </Text>
+            </Flex>
+        <Text textAlign={'left'} fontWeight="bold" fontSize={{ base: "md", md: "md" }} mb={2}>
           {title}
         </Text>
         <Text fontSize="sm" color="gray.600">
@@ -42,6 +49,7 @@ function KegiatanCard({ title, link, imageUrl, date }) {
         <ChakraLink as={Link} to={link} fontSize={{ base: "xs", md: "xs" }} color="white">
           Selengkapnya...
         </ChakraLink>
+        
       </Box>
     </Box>
   );

@@ -8,11 +8,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 const GaleriSlider = () => {
   const sliderRef = useRef(null);
   const images = [
-    { url: '/images/posyandu.jpg', title: 'Image 1' },
-    { url: '/images/maulid.jpeg', title: 'Image 2' },
-    { url: '/images/ebeh.png', title: 'Image 3' },
-    { url: '/images/ebeh.png', title: 'Image 4' },
-    { url: '/images/ebeh.png', title: 'Image 5' },
+    { url: '/images/galeri/g-1.png', title: 'Image 1' },
+    { url: '/images/galeri/g-2.png', title: 'Image 2' },
+    { url: '/images/galeri/g-3.png', title: 'Image 3' },
+    { url: '/images/galeri/g-4.png', title: 'Image 4' },
+    { url: '/images/galeri/g-5.png', title: 'Image 5' },
   ];
   const [currentSlide, setCurrentSlide] = useState(Math.floor(images.length / 2));
 
@@ -50,14 +50,14 @@ const GaleriSlider = () => {
               key={index}
               p={2}
               style={{
-                width: '300px', // Adjust the width as needed
-                height: '200px', // Adjust the height as needed
+                width: '300px',
+                height: '200px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 overflow: 'hidden',
-                borderRadius: '8px', // Add rounded corners for a polished look
-                boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)', // Add a subtle shadow for depth
+                borderRadius: '8px',
+                boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)',
               }}
             >
               <Image

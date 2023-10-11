@@ -1,4 +1,5 @@
-import { Box, Text, Link, Flex } from '@chakra-ui/react';
+import { Box, Text, Flex } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -35,9 +36,9 @@ const Footer = () => {
  <span style={{ textAlign:'justify' }}> Website desa dibangun sebagai bagian dari SISTEM INFORMASI DESA yang berfungsi sebagai portal informasi, transparansi, dan sosialisasi pemerintah terkait tata kelola pembangunan kawasan perdesaan (pembangunan, pembinaan, dan pemberdayaan) yang dirasakan langsung oleh masyarakat sebagai penerima manfaat.</span>
 </Text>
 
-          <Link
+          <Link as={'link'}
             fontSize={14}
-          
+          to={'/sejarah-desa'}
           >
             Selengkapnya...
           </Link>

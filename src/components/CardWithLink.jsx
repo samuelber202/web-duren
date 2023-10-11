@@ -5,7 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 function CardWithLinks() {
   return (
     <Flex gap={10} justifyContent={'space-around'}>
-    <Link as={RouterLink} to="/dashboard/kegiatan">
+    <Link as={RouterLink} to="/dashboard/berita">
     <Box
       borderWidth="1px"
       borderRadius="md"
@@ -14,11 +14,11 @@ function CardWithLinks() {
       width="100%"
     >
       <Flex justifyContent="space-between" alignItems="center">
-        <Text fontWeight="bold">Kegiatan</Text>
+        <Text fontWeight="bold">Berita</Text>
 
       </Flex>
       <Text mt="2" fontSize="1rem">
-       Tambah & Hapus Kegiatan
+       Tambah Berita
       </Text>
     </Box>
     </Link>
@@ -35,7 +35,7 @@ function CardWithLinks() {
  
        </Flex>
        <Text mt="2" fontSize="1rem">
-        Tambah & Hapus Pengumuman
+        Tambah Pengumuman
        </Text>
      </Box>
      </Link>
