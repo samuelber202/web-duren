@@ -49,14 +49,14 @@ function Navbar() {
           </Link>
           <Link
             mr={6}
-            to="/kegiatan-warga"
+            to="/berita-warga"
             color="black"
             _hover={{
               transform: "scale(1.2)",
               transition: "transform 0.2s ease-in-out",
             }}
           >
-            Kegiatan
+            Berita
           </Link>
           <Link
             color="black"
@@ -84,9 +84,9 @@ function Navbar() {
               transform: "scale(1.2)",
               transition: "transform 0.2s ease-in-out",
             }}
-            to={"/tentang-desa"}
+            to={"/sejarah-desa"}
           >
-            Tentang Desa
+            Sejarah Desa
           </Link>
         </Flex>
         <IconButton
@@ -115,7 +115,7 @@ function Navbar() {
               h="100%"
             >
               <Link
-                href="/home"
+                to="/"
                 mb={4}
                 fontWeight={"bold"}
                 color="black"
@@ -124,35 +124,37 @@ function Navbar() {
                 Home
               </Link>
               <Link
-                href="/kegiatan-warga"
+                to="/berita-warga"
                 mb={4}
                 fontWeight={"bold"}
                 color="black"
             
 >
-                Kegiatan
+                Berita
               </Link>
               <Link
+              to={'/statistik'}
                 color="black"
                 fontWeight={"bold"}
                 _hover={{ textDecoration: "none" }}
               >
-                UMKM
+                Statistik
               </Link>
               <Link
                 color="black"
                 fontWeight={"bold"}
                 _hover={{ textDecoration: "none" }}
+                to={'/informasi'}
               >
                 Informasi
               </Link>
               <Link
-                href="/tentang-desa"
+                to="/sejarah-desa"
                 color="black"
                 fontWeight={"bold"}
                 _hover={{ textDecoration: "none" }}
               >
-                Tentang Desa
+                Sejarah Desa
               </Link>
             </Flex>
           </DrawerBody>

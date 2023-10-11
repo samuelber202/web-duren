@@ -45,7 +45,7 @@ const SejarahDesaPage = () => {
             Nama "Duren" berasal dari buah yang kita semua kenal dengan baik,
             yaitu durian. Sejarahnya bermula dari kecintaan penduduk desa Duren
             terhadap buah durian yang begitu lezat. Setiap rumah di sini hampir
-            selalu memiliki kebun atau lahan darat, dan hampir semua dari mereka
+            selalu me miliki kebun atau lahan darat, dan hampir semua dari mereka
             menanam pohon durian. Bahkan, ada yang memiliki hingga 10 pohon
             durian di kebun mereka. Embah Kadi B. Ucan(Alm), salah satu tokoh di
             desa ini, memiliki tanah yang sekarang menjadi bagian dari jalan

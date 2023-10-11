@@ -16,7 +16,7 @@ function MenuCard() {
         color={"#1B98E0"}
         backgroundColor={"gray.100"}
       >
-        <Link to={"/umkm"} className="menu__link">
+        <Link to={"/berita-warga"} className="menu__link">
           <Flex flexDirection={"column"} textAlign="center">
             <Img
               mx="auto"
@@ -25,7 +25,7 @@ function MenuCard() {
               height={50}
             />
             <Text mt={2} fontWeight="600">
-              Pengumuman
+              Berita Warga
             </Text>
           </Flex>
         </Link>
@@ -42,11 +42,11 @@ function MenuCard() {
             </Text>
           </Flex>
         </Link>
-        <Link to={"/kegiatan-warga"} className="menu__link">
+        <Link to={"/statistik"} className="menu__link">
           <Flex flexDirection={"column"} textAlign="center">
             <Img src="/images/services.svg" width={90} height={50} />
             <Text mt={2} fontWeight="600">
-              Kegiatan
+              Statistik
             </Text>
           </Flex>
         </Link>

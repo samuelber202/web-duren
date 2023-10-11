@@ -8,22 +8,25 @@ import Informasi from "./pages/Informasi";
 import PengumumanAdmin from "./pages/PengumumanAdmin";
 import KegiatanAdmin from "./pages/KegiatanAdmin";
 import Statistik from "./pages/Statistik";
+import KegiatanSinglePage from "./pages/KegiatanSinglePage";
+import ScrollToTop from "./config/ScrollToTop";
 
 function App() {
   const isUserAuthenticated = localStorage.getItem("zxc9238[0]-2Token");
 
   return (
     <main>
+        <ScrollToTop/>
+
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-        <Route path="/tentang-desa" element={<SejarahDesaPage />} />
+        <Route path="/sejarah-desa" element={<SejarahDesaPage />} />
         <Route path="/informasi" element={<Informasi />} />
         <Route path="/statistik">
         <Route
             index element={<Statistik />} 
           />
-      
 
         </Route>
 
@@ -45,23 +48,15 @@ function App() {
             }
           />
           <Route
-            path="kegiatan"
+            path="berita"
             element={
               isUserAuthenticated ? <KegiatanAdmin /> : <Navigate to="/login" />
             }
           />
         </Route>
 
-        <Route path="/kegiatan-warga">
-          <Route index element={<KegiatanWarga />} />
-          <Route path="minggon" element={<PengumumanAdmin />} />
-          <Route
-            path="kegiatan"
-            element={
-              isUserAuthenticated ? <KegiatanAdmin /> : <Navigate to="/login" />
-            }
-          />
-        </Route>
+        <Route path="/berita-warga" element={<KegiatanWarga />} />
+        <Route path="/berita-warga/:id" element={<KegiatanSinglePage />} />
       </Routes>
     </main>
   );

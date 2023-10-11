@@ -5,7 +5,7 @@ import CardWithLinks from "../components/CardWithLink";
 function Dashboard() {
   return (
     <section>
-      <DashboardLayout heading='Dashboard Admin'>
+      <DashboardLayout >
       <CardWithLinks/>
       </DashboardLayout>
     </section>
