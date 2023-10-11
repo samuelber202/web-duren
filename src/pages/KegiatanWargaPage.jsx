@@ -15,13 +15,13 @@ const KegiatanWargaPage = () => {
       .get("https://651635c709e3260018c9876d.mockapi.io/kegiatan")
       .then((response) => {
         setKegiatanData(response.data);
-        setLoading(false); // Set loading to false when data is loaded
+        setLoading(false); 
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        setLoading(false); // Handle error and set loading to false
+        setLoading(false); 
       });
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []);
 
   return (
     <section>
