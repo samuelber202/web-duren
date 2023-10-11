@@ -3,7 +3,7 @@ import { Heading, Box, Grid, Spinner, Text } from "@chakra-ui/react";
 import KegiatanPageCard from "../components/KegiatanPageCard";
 import axios from "axios";
 import { format } from "date-fns";
-import PageLayout from "../components/layouts/pageLayout";
+import PageLayout from "../components/layouts/PageLayout";
 
 const KegiatanWargaPage = () => {
   const [kegiatanData, setKegiatanData] = useState([]);
