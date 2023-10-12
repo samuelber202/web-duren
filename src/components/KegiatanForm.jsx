@@ -101,7 +101,7 @@ const KegiatanForm = () => {
               setAlert({
                 status: 'success',
                 title: 'Success',
-                description: 'Kegiatan Berhasil Ditambahkan!',
+                description: 'Berita Berhasil Ditambahkan!',
               });
               resetForm();
             } else {
@@ -146,7 +146,7 @@ const KegiatanForm = () => {
                       <FormControl
                         isInvalid={form.errors.title && form.touched.title}
                       >
-                        <FormLabel htmlFor="title">Masukkan Judul Kegiatan</FormLabel>
+                        <FormLabel htmlFor="title">Masukkan Judul Berita</FormLabel>
                         <Input {...field} id="title" placeholder="Masukkan judul artikel" />
                         <FormErrorMessage>{form.errors.title}</FormErrorMessage>
                       </FormControl>

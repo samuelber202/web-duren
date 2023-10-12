@@ -19,11 +19,11 @@ const KegiatanCard = ({ title, description, imageUrl, date, tag, id }) => {
     setDescriptionExpanded(!isDescriptionExpanded);
   };
 
-  const truncatedDescription = description.slice(0, 250);
+  const truncatedDescription = description.slice(0, 250) + " ....";
   const shouldShowReadMore = description.length > 250 && !isDescriptionExpanded;
 
   return (
-    <Link to={`/berita-warga/${id}`}>
+    <Link to={`/pengumuman-warga/${id}`}>
       <Card
         maxW="sm"
         borderRadius="lg"

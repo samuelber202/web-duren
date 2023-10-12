@@ -10,7 +10,6 @@ function KegiatanWarga() {
   const [kegiatanData, setKegiatanData] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the API when the component mounts
     axios.get("https://651635c709e3260018c9876d.mockapi.io/kegiatan")
       .then((response) => {
         setKegiatanData(response.data);

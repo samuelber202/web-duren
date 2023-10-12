@@ -8,6 +8,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { CalendarIcon, ChevronDownIcon, ChevronUpIcon, InfoIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom"; // Import React Router's Link component
 
 function PengumumanCard({ title, content, date }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -19,6 +20,8 @@ function PengumumanCard({ title, content, date }) {
   const buttonSize = useBreakpointValue({ base: "xs", sm: "sm" });
 
   const maxLines = isDropdownOpen ? content.length : 5; // Adjust the number of lines to display
+
+  const isContentTooLong = content.length > 250; // You can adjust the character limit
 
   return (
     <>
@@ -67,6 +70,7 @@ function PengumumanCard({ title, content, date }) {
             </Text>
           </Box>
         </Collapse>
+      
       </Box>
     </>
   );

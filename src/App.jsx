@@ -10,6 +10,8 @@ import KegiatanAdmin from "./pages/KegiatanAdmin";
 import Statistik from "./pages/Statistik";
 import KegiatanSinglePage from "./pages/KegiatanSinglePage";
 import ScrollToTop from "./config/ScrollToTop";
+import PengumumanWargaPage from "./pages/PengumumanWargaPage";
+import PengumumanSinglePage from "./pages/PengumumanSinglePage";
 
 function App() {
   const isUserAuthenticated = localStorage.getItem("zxc9238[0]-2Token");
@@ -57,6 +59,9 @@ function App() {
 
         <Route path="/berita-warga" element={<KegiatanWarga />} />
         <Route path="/berita-warga/:id" element={<KegiatanSinglePage />} />
+        <Route path="/pengumuman-warga" element={<PengumumanWargaPage />} />
+        <Route path="/pengumuman-warga/:id" element={<PengumumanSinglePage />} />
+
       </Routes>
     </main>
   );

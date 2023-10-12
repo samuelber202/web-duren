@@ -8,6 +8,9 @@ import {
   Heading,
   Input,
   Textarea,
+  Grid, 
+  GridItem,
+  CircularProgress,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -17,6 +20,8 @@ import ChakraAlert from './alerts/ChakraAlert';
 const initialValues = {
   title: '',
   content: '',
+  content1: '',
+  content2: '',
   file: null,
 };
 
@@ -30,10 +35,11 @@ const validationSchema = Yup.object().shape({
     .max(10000, 'Artikel harus kurang dari 10000 karakter'),
 });
 
-const PengumumanForm = () => {
+const KegiatanForm = () => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState('');
   const [alert, setAlert] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     if (image) {
@@ -42,6 +48,7 @@ const PengumumanForm = () => {
   }, [image]);
 
   const uploadImage = () => {
+    setIsUploading(true);
     const data = new FormData();
     data.append('file', image);
     data.append('upload_preset', 'tutorial');
@@ -54,7 +61,10 @@ const PengumumanForm = () => {
       .then((data) => {
         setUrl(data.url);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsUploading(false);
+      });
   };
 
   return (
@@ -74,7 +84,9 @@ const PengumumanForm = () => {
           const payload = {
             title: values.title,
             content: values.content,
-            author: "Admin Desa",
+            content1: values.content1,
+            content2: values.content2,
+            author: 'Admin Desa',
             image_url: url,
           };
           setAlert(null);
@@ -89,7 +101,7 @@ const PengumumanForm = () => {
               setAlert({
                 status: 'success',
                 title: 'Success',
-                description: 'Pengumuman successfully added!',
+                description: 'Pengumuman Berhasil Ditambahkan!',
               });
               resetForm();
             } else {
@@ -108,7 +120,8 @@ const PengumumanForm = () => {
             });
           } finally {
             setSubmitting(false);
-            setImage(null); // Clear the image after submission
+            window.scrollTo(0, 0)
+            setImage(null);
           }
         }}
       >
@@ -117,58 +130,115 @@ const PengumumanForm = () => {
             <Box
               mx={'auto'}
               textAlign={'center'}
-              maxW={{ base: '100%', sm: '400px' }}
+              maxW={{ base: '100%', sm: '800px' }}
               p={4}
               boxShadow="lg"
               rounded="md"
             >
               <Heading mb={4} fontSize={{ base: 'xl', sm: '2xl' }}>
-                Tambah Pengumuman
+                Tambah Pengumuman Warga
               </Heading>
 
-              <Field name="title">
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.title && form.touched.title}>
-                    <FormLabel htmlFor="title">Masukkan Judul Pengumuman</FormLabel>
-                    <Input {...field} id="title" placeholder="Masukkan judul artikel" />
-                    <FormErrorMessage>{form.errors.title}</FormErrorMessage>
+              <Grid templateColumns="1fr 1fr" gap={4}>
+                <GridItem colSpan={1}>
+                  <Field name="title">
+                    {({ field, form }) => (
+                      <FormControl
+                        isInvalid={form.errors.title && form.touched.title}
+                      >
+                        <FormLabel htmlFor="title">Masukkan Judul Pengumuman</FormLabel>
+                        <Input {...field} id="title" placeholder="Masukkan judul artikel" />
+                        <FormErrorMessage>{form.errors.title}</FormErrorMessage>
+                      </FormControl>
+                    )}
+                  </Field>
+                </GridItem>
+
+                <GridItem colSpan={1}>
+                  <FormControl isInvalid={url === '' && image === null}>
+                    <FormLabel htmlFor="file">Unggah Gambar</FormLabel>
+                    <Input
+                      type="file"
+                      id="file"
+                      accept="image/*"
+                      onChange={(e) => {
+                        setImage(e.target.files[0]);
+                        setFieldValue('file', e.target.files[0]);
+                      }}
+                    />
+                    <FormErrorMessage>Membutuhkan Gambar</FormErrorMessage>
                   </FormControl>
-                )}
-              </Field>
+                </GridItem>
+              </Grid>
 
               <Field name="content">
                 {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.content && form.touched.content}>
-                    <FormLabel htmlFor="content">Masukkan Content</FormLabel>
-                    <Textarea {...field} id="content" rows="5" placeholder="Masukkan artikel disini" />
+                  <FormControl
+                    isInvalid={form.errors.content && form.touched.content}
+                  >
+                    <FormLabel htmlFor="content">Masukkan Paragraph 1</FormLabel>
+                    <Textarea
+                      {...field}
+                      id="content"
+                      rows="5"
+                      placeholder="Masukkan artikel disini"
+                    />
+                    <FormErrorMessage>{form.errors.content}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="content1">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.content && form.touched.content}
+                  >
+                    <FormLabel htmlFor="content">Masukkan Paragraph 2</FormLabel>
+                    <Textarea
+                      {...field}
+                      id="content"
+                      rows="5"
+                      placeholder="Masukkan artikel disini"
+                    />
+                    <FormErrorMessage>{form.errors.content}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="content2">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.content && form.touched.content}
+                  >
+                    <FormLabel htmlFor="content">Masukkan Paragraph 3</FormLabel>
+                    <Textarea
+                      {...field}
+                      id="content"
+                      rows="5"
+                      placeholder="Masukkan artikel disini"
+                    />
                     <FormErrorMessage>{form.errors.content}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
 
-              <FormControl isInvalid={url === '' && image === null}>
-                <FormLabel htmlFor="file">Upload Image</FormLabel>
-                <Input
-                  type="file"
-                  id="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    setImage(e.target.files[0]);
-                    setFieldValue('file', e.target.files[0]);
-                  }}
+              {isUploading && (
+                <CircularProgress
+                  isIndeterminate
+                  color="teal"
+                  size="10px"
+                  mt={2}
+                  alignSelf="center"
                 />
-                <FormErrorMessage>Image is required</FormErrorMessage>
-              </FormControl>
+              )}
 
               <Button
                 mt={4}
                 colorScheme="teal"
-                isLoading={isSubmitting}
+                isLoading={isSubmitting || isUploading}
                 type="submit"
                 width="100%"
-                isDisabled={!url} 
+                isDisabled={!url}
               >
-                Add
+                Tambah Pengumuman
               </Button>
             </Box>
           </Form>
@@ -178,4 +248,4 @@ const PengumumanForm = () => {
   );
 };
 
-export default PengumumanForm;
+export default KegiatanForm;
