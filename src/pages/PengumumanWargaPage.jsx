@@ -5,13 +5,13 @@ import axios from "axios";
 import { format } from "date-fns";
 import PageLayout from "../components/layouts/PageLayout";
 
-const KegiatanWargaPage = () => {
+const PengumumanWargaPage = () => {
   const [kegiatanData, setKegiatanData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("https://651635c709e3260018c9876d.mockapi.io/kegiatan")
+      .get("https://651635c709e3260018c9876d.mockapi.io/pengumuman")
       .then((response) => {
         setKegiatanData(response.data);
         setLoading(false);
@@ -33,7 +33,7 @@ const KegiatanWargaPage = () => {
             textTransform={"uppercase"}
             fontSize="4xl"
           >
-            berita warga
+            pengumuman warga
           </Heading>
         </Box>
         <Grid
@@ -65,4 +65,4 @@ const KegiatanWargaPage = () => {
   );
 };
 
-export default KegiatanWargaPage;
+export default PengumumanWargaPage;

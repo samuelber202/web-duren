@@ -59,6 +59,17 @@ function Navbar() {
             Berita
           </Link>
           <Link
+            mr={6}
+            to="/pengumuman-warga"
+            color="black"
+            _hover={{
+              transform: "scale(1.2)",
+              transition: "transform 0.2s ease-in-out",
+            }}
+          >
+            Pengumuman
+          </Link>
+          <Link
             color="black"
             _hover={{
               transform: "scale(1.2)",
@@ -75,6 +86,7 @@ function Navbar() {
               transition: "transform 0.2s ease-in-out",
             }}
             to={"/informasi"}
+            
           >
             Informasi
           </Link>
@@ -131,6 +143,15 @@ function Navbar() {
             
 >
                 Berita
+              </Link>
+              <Link
+                to="/pengumuman-warga"
+                mb={4}
+                fontWeight={"bold"}
+                color="black"
+            
+>
+                Pengumuman
               </Link>
               <Link
               to={'/statistik'}
