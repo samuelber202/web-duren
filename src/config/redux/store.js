@@ -3,11 +3,13 @@ import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from './reducers/authReducer';
-import beritaReducer from './reducers/beritaReducer';
+import beritaAction from './reducers/beritaReducer';
+import pengumumanAction from './reducers/pengumumanReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  berita: beritaReducer
+  berita: beritaAction,
+  pengumuman: pengumumanAction
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -7,86 +7,79 @@ import KegiatanWarga from '../components/KegiatanWarga';
 import KegiatanCard from '../components/KegiatanCard';
 import { format } from 'date-fns';
 import { CalendarIcon, ChevronRightIcon, InfoIcon } from '@chakra-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPengumuman } from '../config/redux/actions/pengumumanAction';
+import { getBerita } from '../config/redux/actions/beritaAction';
 
-function KegiatanSinglePage() {
+function PengumumanSinglePage() {
   const { id } = useParams();
+  const dispatch = useDispatch()
   const [kegiatanData, setKegiatanData] = useState(null);
   const [beritaSuggestions, setBeritaSuggestions] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
-  const beritaPerPage = 5; // Number of beritas per page
+
+
+  const {getBeritaResult} = useSelector((state) => state.berita);
 
   useEffect(() => {
-    // Fetch the current berita
-    axios
-      .get(`https://651635c709e3260018c9876d.mockapi.io/kegiatan/${+id}`)
-      .then((response) => {
-        setKegiatanData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      })
-      .finally(() => {
-        setIsLoading(false); // Turn off loading state when done
-      });
-
-      axios
-      .get(`https://651635c709e3260018c9876d.mockapi.io/kegiatan`)
-      .then((response) => {
-        // Sort the beritas by date in descending order
-        const sortedBeritas = response.data.sort(
-          (a, b) => b.createdAt - a.createdAt
-        );
-        // Get the latest 5 beritas
-        const latestBeritas = sortedBeritas.slice(0, 5);
-        // Filter out the current berita (if it exists) and set the suggestions
-        const filteredBeritas = latestBeritas.filter((berita) => berita.id !== +id);
-        setBeritaSuggestions(filteredBeritas);
-      })
-      .catch((error) => {
-        console.error('Error fetching berita suggestions:', error);
-      });
-    })    
-
+    dispatch(getBerita())
+   }, [dispatch]); 
  
-
-  if (isLoading) {
-    return (
-      <Flex alignItems="center" justifyContent="center" h="100vh">
-        <Spinner size="xl" color="teal" />
-      </Flex>
+   useEffect(()=>{
+     if(getBeritaResult){
+      const filteredData = getBeritaResult.filter((item) => item.id === id);
+     setKegiatanData(filteredData)
+     const sortedBeritas = getBeritaResult ?? getBeritaResult.sort(
+      (a, b) => b.createdAt - a.createdAt
     );
-  }
+    const latestBeritas = sortedBeritas ?? sortedBeritas.slice(0, 5);
+    const filteredBeritas = latestBeritas ?? latestBeritas.filter((berita) => berita.id !== +id);
+    setBeritaSuggestions(filteredBeritas)
+
+     }
+   },[getBeritaResult])
+
+
+  
+
+  
 
   return (
+    <>
+    {kegiatanData ? 
     <SinglePageLayout>
       <Flex alignItems="center" justifyContent="center">
     <Text mt={10} mb={10} fontWeight="bold" textAlign="center" fontSize="4xl">
-      {kegiatanData.title}
+      {kegiatanData[0].title}
     </Text>
   </Flex>
 
   <Flex gap={10} mt={10} direction={["column", "column", "row"]} alignItems="flex-start"> {/* Change to "flex-start" */}
     <Box flex={["1", "1", "2"]} mb={[5, 5, 0]}>
-        <Text color={'blue.500'} mb={5}><CalendarIcon/>{" "}{format(new Date(kegiatanData.createdAt * 1000), "dd/MM/yyyy HH:mm")} | <InfoIcon/>{" "}{kegiatanData.author}</Text>
+        <Text color={'blue.500'} mb={5}><CalendarIcon/>{" "}{format(new Date(kegiatanData[0].createdAt * 1000), "dd/MM/yyyy HH:mm")} | <InfoIcon/>{" "}{kegiatanData[0].author}</Text>
       <Img
-        src={kegiatanData.image_url}
+        src={kegiatanData[0].image_url}
         width="full"
         height="500px"
       />
       <Text mt={10} textAlign={'justify'}>
-        {kegiatanData.content}
+        {kegiatanData[0].content.split('\n').map((line, index) => (
+      <Text key={index}>{line}</Text>
+    ))}
       </Text>
       <Text mt={10} textAlign={'justify'}>
-        {kegiatanData.content1}
+      {kegiatanData[0].content1.split('\n').map((line, index) => (
+      <Text key={index}>{line}</Text>
+    ))}
       </Text>
       <Text mt={10} textAlign={'justify'}>
-        {kegiatanData.content2}
+      {kegiatanData[0].content2.split('\n').map((line, index) => (
+      <Text key={index}>{line}</Text>
+    ))}
       </Text>
     </Box>
     <Box>
       <Heading color={'blue.500'} as="h2" fontSize="2xl" mb={4}>
-        Berita Lainnya <ChevronRightIcon/>
+        Pengumuman Lainnya <ChevronRightIcon/>
       </Heading>
       <Divider orientation="horizontal" borderWidth="1px" borderColor={'blue.500'}/>
 
@@ -106,7 +99,9 @@ function KegiatanSinglePage() {
     </Box>
   </Flex>
     </SinglePageLayout>
+    :""}
+    </>
   );
 }
 
-export default KegiatanSinglePage;
+export default PengumumanSinglePage;

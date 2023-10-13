@@ -21,8 +21,6 @@ function PengumumanCard({ title, content, date }) {
 
   const maxLines = isDropdownOpen ? content.length : 5; // Adjust the number of lines to display
 
-  const isContentTooLong = content.length > 250; // You can adjust the character limit
-
   return (
     <>
       <Box
