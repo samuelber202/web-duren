@@ -4,49 +4,66 @@ import { format } from "date-fns"; // Import the format function
 import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getBerita } from "../config/redux/actions/beritaAction";
+import KegiatanCardSkeleton from "./KegiatanCardSkeleton";
 
 function KegiatanWarga() {
-  const [kegiatanData, setKegiatanData] = useState([]);
+  const dispatch = useDispatch();
+  const [beritaData, setBeritaData] = useState([]);
+  const { getBeritaResult } = useSelector((state) => state.berita);
 
   useEffect(() => {
-    axios.get("https://651635c709e3260018c9876d.mockapi.io/kegiatan")
-      .then((response) => {
-        setKegiatanData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []); 
-  
-  const slicedKegiatanData = kegiatanData
+    dispatch(getBerita());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (getBeritaResult) {
+      setBeritaData(getBeritaResult);
+    }
+  }, [getBeritaResult]);
+
+  const isLoading = !getBeritaResult;
+  const cardWidth = "300px"; // Fixed width for each card
+  const cardsPerRow = 3; // Number of cards to display in a row
+
+  const slicedKegiatanData = beritaData ? beritaData
   .slice() 
   .reverse() 
-  .slice(0, 4)
+  .slice(0, 4) : ""
+
   return (
-    <Flex flexDirection={'column'} flexGrow={6}>
-      <Text fontSize={'2xl'}>
-        Berita <ChevronRightIcon/>
+    <Flex flexDirection="column" flexGrow={6}>
+      <Text fontSize="2xl">
+        Berita <ChevronRightIcon />
       </Text>
-      <Divider orientation="horizontal" borderWidth="1px" borderColor={'blue.500'}/>
+      <Divider orientation="horizontal" borderWidth="1px" borderColor="blue.500" />
 
       <Box>
-        <Flex mt={5} gap={5} flexDirection={"row"} flexWrap="wrap">
-          {slicedKegiatanData.map((kegiatan) => (
-            <KegiatanCard
-              key={kegiatan.id}
-              title={kegiatan.title}
-              description={kegiatan.description}
-              date={format(new Date(kegiatan.createdAt * 1000), "dd/MM/yyyy HH:mm")} // Format createdAt
-              imageUrl={kegiatan.image_url}
-              author={kegiatan.author}
-              link={`/berita-warga/${kegiatan.id}`}
-            />
-          ))}
+        <Flex mt={5} gap={5} flexDirection="row" flexWrap="wrap">
+          {isLoading
+            ? // Render KegiatanCardSkeleton while loading
+              [1, 2, 3, 4].map((key) => (
+                <KegiatanCardSkeleton key={key} width={cardWidth} />
+              ))
+            : // Render actual KegiatanCard components
+              slicedKegiatanData.map((kegiatan) => (
+                <KegiatanCard
+                  key={kegiatan.id}
+                  title={kegiatan.title}
+                  description={kegiatan.description}
+                  date={format(new Date(kegiatan.createdAt * 1000), "dd/MM/yyyy HH:mm")}
+                  imageUrl={kegiatan.image_url}
+                  author={kegiatan.author}
+                  link={`/berita-warga/${kegiatan.id}`}
+                  width={cardWidth} // Set the width of each card
+                />
+              ))
+          }
         </Flex>
-        <Flex justifyContent={"center"} mt={5}>
-          <Link to={'/berita-warga'}>
-            <Button borderRadius={"md"}>
+        <Flex justifyContent="center" mt={5}>
+          <Link to="/berita-warga">
+            <Button borderRadius="md">
               <Text>Lihat Selengkapnya</Text>
             </Button>
           </Link>

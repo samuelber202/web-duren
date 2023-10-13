@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
     .max(100, 'Judul harus kurang dari 100 karakter'),
   content: Yup.string()
     .required('Masukkan artikel disini')
-    .min(20, 'Artikel harus memiliki setidaknya 20 karakter')
+    .min(250, 'Artikel harus memiliki setidaknya 250 karakter')
     .max(10000, 'Artikel harus kurang dari 10000 karakter'),
 });
 

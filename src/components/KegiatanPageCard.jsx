@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Box,
   Card,
@@ -12,18 +13,20 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const KegiatanCard = ({ title, description, imageUrl, date, tag, id }) => {
+const KegiatanPageCard = ({ title, description, imageUrl, date, tag,id }) => {
   const [isDescriptionExpanded, setDescriptionExpanded] = useState(false);
 
   const toggleDescription = () => {
     setDescriptionExpanded(!isDescriptionExpanded);
   };
-
-  const truncatedDescription = description.slice(0, 250) + " ....";
-  const shouldShowReadMore = description.length > 250 && !isDescriptionExpanded;
-
+ 
+  const truncatedDescription = description ? description.slice(0, 250) + " ...." : "";
+  
+  
+  const shouldShowReadMore = description ? description.length > 250 && !isDescriptionExpanded : "";
   return (
-    <Link to={`/pengumuman-warga/${id}`}>
+   
+    <Link to={`${id}`}>
       <Card
         maxW="sm"
         borderRadius="lg"
@@ -86,4 +89,4 @@ const KegiatanCard = ({ title, description, imageUrl, date, tag, id }) => {
   );
 };
 
-export default KegiatanCard;
+export default KegiatanPageCard;
