@@ -42,7 +42,7 @@ const Login = () => {
 
       if (res) {
         dispatch({ type: 'LOGIN', value: true });
-        navigate('/dashboard');
+        location.replace('/dashboard');
       } else {
         console.log('Login failed');
       }

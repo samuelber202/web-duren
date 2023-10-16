@@ -9,6 +9,7 @@ const Footer = () => {
         position="relative"
         bg="#282455"
         py={10}
+        px={10}
         mt={10}
         color="white"
       >
