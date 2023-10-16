@@ -14,6 +14,7 @@ import PengumumanWargaPage from "./pages/PengumumanWargaPage";
 import PengumumanSinglePage from "./pages/PengumumanSinglePage";
 import HapusPengumuman from "./pages/HapusPengumuman";
 import HapusBerita from "./pages/HapusBerita";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const isUserAuthenticated = localStorage.getItem("zxc9238[0]-2Token");
@@ -83,7 +84,7 @@ function App() {
         <Route path="/berita-warga/:id" element={<KegiatanSinglePage />} />
         <Route path="/pengumuman-warga" element={<PengumumanWargaPage />} />
         <Route path="/pengumuman-warga/:id" element={<PengumumanSinglePage />} />
-
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   );
