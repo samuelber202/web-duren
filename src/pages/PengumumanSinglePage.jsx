@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
-import { Flex, Heading, Box, Text, Img, Spinner, SimpleGrid, Button, Divider } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+import { Flex, Heading, Box, Text, Img, SimpleGrid, Divider } from '@chakra-ui/react';
 import SinglePageLayout from '../components/layouts/SinglePageLayout';
-import KegiatanWarga from '../components/KegiatanWarga';
 import KegiatanCard from '../components/KegiatanCard';
-import { format } from 'date-fns';
 import { CalendarIcon, ChevronRightIcon, InfoIcon } from '@chakra-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPengumuman } from '../config/redux/actions/pengumumanAction';
@@ -26,7 +23,7 @@ function PengumumanSinglePage() {
    useEffect(()=>{
      if(getPengumumanResult){
       const filteredData = getPengumumanResult.filter((item) => item.id === id);
-     setKegiatanData(filteredData)
+     setKegiatanData(filteredData[0])
      const sortedBeritas = getPengumumanResult ?? getPengumumanResult.sort(
       (a, b) => b.createdAt - a.createdAt
     );
@@ -37,41 +34,36 @@ function PengumumanSinglePage() {
      }
    },[getPengumumanResult])
 
-
-  
-
-  
-
   return (
     <>
     {kegiatanData ? 
     <SinglePageLayout>
       <Flex alignItems="center" justifyContent="center">
     <Text mt={10} mb={10} fontWeight="bold" textAlign="center" fontSize="4xl">
-      {kegiatanData[0].title}
+      {kegiatanData.title}
     </Text>
   </Flex>
 
   <Flex gap={10} mt={10} direction={["column", "column", "row"]} alignItems="flex-start"> {/* Change to "flex-start" */}
     <Box flex={["1", "1", "2"]} mb={[5, 5, 0]}>
-        <Text color={'blue.500'} mb={5}><CalendarIcon/>{" "}{format(new Date(kegiatanData[0].createdAt * 1000), "dd/MM/yyyy HH:mm")} | <InfoIcon/>{" "}{kegiatanData[0].author}</Text>
+        <Text color={'blue.500'} mb={5}><CalendarIcon/>{" "}{kegiatanData.createdAt} | <InfoIcon/>{" "}{kegiatanData.author}</Text>
       <Img
-        src={kegiatanData[0].image_url}
+        src={kegiatanData.image_url}
         width="full"
         height="500px"
       />
-      <Text mt={10} textAlign={'justify'}>
-        {kegiatanData[0].content.split('\n').map((line, index) => (
+    <Text mt={10} textAlign={'justify'}>
+        {kegiatanData.content.split('\n').map((line, index) => (
       <Text key={index}>{line}</Text>
     ))}
       </Text>
       <Text mt={10} textAlign={'justify'}>
-      {kegiatanData[0].content1.split('\n').map((line, index) => (
+      {kegiatanData.content1.split('\n').map((line, index) => (
       <Text key={index}>{line}</Text>
     ))}
       </Text>
       <Text mt={10} textAlign={'justify'}>
-      {kegiatanData[0].content2.split('\n').map((line, index) => (
+      {kegiatanData.content2.split('\n').map((line, index) => (
       <Text key={index}>{line}</Text>
     ))}
       </Text>
@@ -88,7 +80,7 @@ function PengumumanSinglePage() {
             key={berita.id}
             title={berita.title}
             description={berita.description}
-            date={format(new Date(berita.createdAt * 1000), "dd/MM/yyyy HH:mm")} // Format createdAt
+            date={berita.createdAt} 
             imageUrl={berita.image_url}
             author={berita.author}
             link={`/berita-warga/${berita.id}`}

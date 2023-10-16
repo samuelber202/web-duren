@@ -12,6 +12,7 @@ function KegiatanWarga() {
   const dispatch = useDispatch();
   const [beritaData, setBeritaData] = useState([]);
   const { getBeritaResult } = useSelector((state) => state.berita);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getBerita());
@@ -20,12 +21,14 @@ function KegiatanWarga() {
   useEffect(() => {
     if (getBeritaResult) {
       setBeritaData(getBeritaResult);
-    }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
+        }
   }, [getBeritaResult]);
 
-  const isLoading = !getBeritaResult;
-  const cardWidth = "300px"; // Fixed width for each card
-  const cardsPerRow = 3; // Number of cards to display in a row
+
+  const cardWidth = "300px";
 
   const slicedKegiatanData = beritaData ? beritaData
   .slice() 
@@ -40,19 +43,19 @@ function KegiatanWarga() {
       <Divider orientation="horizontal" borderWidth="1px" borderColor="blue.500" />
 
       <Box>
-        <Flex mt={5} gap={5} flexDirection="row" flexWrap="wrap">
+        <Flex mt={5} justifyContent={'space-between'} flexDirection="row" flexWrap="wrap">
           {isLoading
-            ? // Render KegiatanCardSkeleton while loading
+            ? 
               [1, 2, 3, 4].map((key) => (
                 <KegiatanCardSkeleton key={key} width={cardWidth} />
               ))
-            : // Render actual KegiatanCard components
+            : 
               slicedKegiatanData.map((kegiatan) => (
                 <KegiatanCard
                   key={kegiatan.id}
                   title={kegiatan.title}
                   description={kegiatan.description}
-                  date={format(new Date(kegiatan.createdAt * 1000), "dd/MM/yyyy HH:mm")}
+                  date={kegiatan.createdAt}
                   imageUrl={kegiatan.image_url}
                   author={kegiatan.author}
                   link={`/berita-warga/${kegiatan.id}`}

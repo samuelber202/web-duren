@@ -1,10 +1,12 @@
-import { GET_BERITA } from "../actions/beritaAction"
+import { DELETE_BERITA, GET_BERITA } from "../actions/beritaAction"
 
 
 const initialState = {
     getBeritaResult: false,
     getBeritaLoading: false,
     getBeritaError: false,
+
+    deleteBeritaResult: false
 }
 
 const beritaAction = (state = initialState, action) =>{
@@ -19,10 +21,21 @@ const beritaAction = (state = initialState, action) =>{
                 getBeritaError: action.payload.errorMessage,
             } 
 
+            case DELETE_BERITA:
+           
+    return{
+        ...state,
+        deleteBeritaResult: true,
+    } 
           
         default : 
         return state
     }
 }
+
+
+
+
+
 
 export default beritaAction

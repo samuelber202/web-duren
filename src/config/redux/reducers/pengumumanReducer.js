@@ -1,10 +1,12 @@
-import { GET_PENGUMUMAN } from "../actions/pengumumanAction"
+import { DELETE_PENGUMUMAN, GET_PENGUMUMAN } from "../actions/pengumumanAction"
 
 
 const initialState = {
     getPengumumanResult: false,
     getPengumumanLoading: false,
     getPengumumanError: false,
+
+    deletePengumumanResult: false
 }
 
 const pengumumanAction = (state = initialState, action) =>{
@@ -17,6 +19,13 @@ const pengumumanAction = (state = initialState, action) =>{
                 getPengumumanResult: action.payload.data,
                 getPengumumanLoading: action.payload.loading,
                 getPengumumanError: action.payload.errorMessage,
+            } 
+
+            case DELETE_PENGUMUMAN:
+           
+            return{
+                ...state,
+                deletePengumumanResult: true,
             } 
 
           

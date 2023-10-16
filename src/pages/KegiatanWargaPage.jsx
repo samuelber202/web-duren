@@ -10,12 +10,11 @@ import { getBerita } from "../config/redux/actions/beritaAction";
 const KegiatanWargaPage = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6); // Number of items to display per page
+  const [itemsPerPage] = useState(6);
   const dispatch = useDispatch();
   const [beritaData, setBeritaData] = useState(null);
 
   const { getBeritaResult } = useSelector((state) => state.berita);
-
   useEffect(() => {
     dispatch(getBerita());
   }, [dispatch]);
@@ -23,7 +22,9 @@ const KegiatanWargaPage = () => {
   useEffect(() => {
     if (getBeritaResult) {
       setBeritaData(getBeritaResult.slice().reverse());
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   }, [getBeritaResult]);
 
@@ -71,7 +72,7 @@ const KegiatanWargaPage = () => {
                   description={kegiatan.content}
                   imageUrl={kegiatan.image_url}
                   tag={kegiatan.author}
-                  date={format(new Date(kegiatan.createdAt * 1000), "dd MMMM yyyy")}
+                  date={kegiatan.createdAt}
                   id={kegiatan.id}
                 />
               ))

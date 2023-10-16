@@ -1,26 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { Heading, Box, Grid, Skeleton, Text } from "@chakra-ui/react";
+import { Heading, Box, Grid, Skeleton, Text, Button } from "@chakra-ui/react";
 import KegiatanPageCard from "../components/KegiatanPageCard";
 import axios from "axios";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import PageLayout from "../components/layouts/PageLayout";
+import { useDispatch, useSelector } from "react-redux";
+import { getPengumuman } from "../config/redux/actions/pengumumanAction";
 
-const PengumumanWargaPage = () => {
-  const [kegiatanData, setKegiatanData] = useState([]);
+const KegiatanWargaPage = () => {
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(6);
+  const dispatch = useDispatch();
+  const [beritaData, setBeritaData] = useState(null);
+
+  const { getPengumumanResult } = useSelector((state) => state.pengumuman);
+  useEffect(() => {
+    dispatch(getPengumuman());
+  }, [dispatch]);
 
   useEffect(() => {
-    axios
-      .get("https://651635c709e3260018c9876d.mockapi.io/pengumuman")
-      .then((response) => {
-        setKegiatanData(response.data);
+    if (getPengumumanResult) {
+      setBeritaData(getPengumumanResult.slice().reverse());
+      setTimeout(() => {
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, []);
+      }, 2000);
+    }
+  }, [getPengumumanResult]);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = beritaData ? beritaData.slice(indexOfFirstItem, indexOfLastItem) : [];
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <section>
@@ -46,23 +61,40 @@ const PengumumanWargaPage = () => {
         >
           {loading
             ? [1, 2, 3, 4, 5, 6].map((index) => (
-                <Skeleton key={index} height="500px" borderRadius={'md'} />
+                <Skeleton key={index} height="500px" borderRadius={"md"} />
               ))
-            : kegiatanData.map((kegiatan) => (
+            : currentItems.map((kegiatan) => (
                 <KegiatanPageCard
                   key={kegiatan.id}
                   title={kegiatan.title}
                   description={kegiatan.content}
                   imageUrl={kegiatan.image_url}
                   tag={kegiatan.author}
-                  date={format(new Date(kegiatan.createdAt * 1000), "dd MMMM yyyy")}
+                  date={kegiatan.createdAt}
                   id={kegiatan.id}
                 />
-              ))}
+              ))
+          }
         </Grid>
+        {beritaData && beritaData.length > itemsPerPage && (
+          <Box textAlign="center" mt={4}>
+            {Array(Math.ceil(beritaData.length / itemsPerPage))
+              .fill(null)
+              .map((_, index) => (
+                <Button
+                  key={index}
+                  variant={currentPage === index + 1 ? "solid" : "outline"}
+                  onClick={() => paginate(index + 1)}
+                  m={1}
+                >
+                  {index + 1}
+                </Button>
+              ))}
+          </Box>
+        )}
       </PageLayout>
     </section>
   );
 };
 
-export default PengumumanWargaPage;
+export default KegiatanWargaPage;

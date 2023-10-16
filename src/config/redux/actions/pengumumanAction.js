@@ -1,45 +1,75 @@
-import axios from "axios"
+import { getDatabase, ref, get, remove } from 'firebase/database';
 
-export const GET_PENGUMUMAN = "GET_PENGUMUMAN"
+export const GET_PENGUMUMAN = "GET_PENGUMUMAN";
+export const DELETE_PENGUMUMAN = "DELETE_PENGUMUMAN";
 
-export const getPengumuman = () =>{
-    return (dispatch)=>{
+
+export const getPengumuman = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: GET_PENGUMUMAN,
+      payload: {
+        loading: true,
+        data: [],
+        errorMessage: null,
+      },
+    });
+
+    try {
+      const db = getDatabase();
+      const pengumumanRef = ref(db, 'pengumuman');
+
+      const dataSnapshot = await get(pengumumanRef);
+
+      if (dataSnapshot.exists()) {
+        const data = dataSnapshot.val();
+        const beritaArray = Object.values(data);
+
         dispatch({
-            type : GET_PENGUMUMAN,
-            payload: {
-                loading: true,
-                data: false,
-                errorMessage: false
-            }
-        })
-
-        axios({
-            method : "GET",
-            url : "https://651635c709e3260018c9876d.mockapi.io/pengumuman",
-            timeout: 120000
-            
-        })
-            .then((res)=>{
-                dispatch({
-                    type : GET_PENGUMUMAN,
-                    payload: {
-                        loading: false,
-                        data: res.data,
-                        errorMessage: false
-                    }
-                })
-            })
-            .catch((err)=>{
-                dispatch({
-                    type : GET_PENGUMUMAN,
-                    payload: {
-                        loading: false,
-                        data: false,
-                        errorMessage: err.message
-                    }
-                })
-            })
-
-
+          type: GET_PENGUMUMAN,
+          payload: {
+            loading: false,
+            data: beritaArray,
+            errorMessage: null,
+          },
+        });
+      } else {
+        dispatch({
+          type: GET_PENGUMUMAN,
+          payload: {
+            loading: false,
+            data: [],
+            errorMessage: 'No data available',
+          },
+        });
+      }
+    } catch (error) {
+      dispatch({
+        type: GET_PENGUMUMAN,
+        payload: {
+          loading: false,
+          data: [],
+          errorMessage: error.message,
+        },
+      });
     }
-}
+  };
+};
+
+
+export const deletePengumuman = (beritaId) => {
+    return async (dispatch) => {
+      try {
+        const db = getDatabase();
+        const beritaRef = ref(db, `pengumuman/${beritaId}`);
+        
+        await remove(beritaRef); 
+        dispatch({
+          type: DELETE_PENGUMUMAN,
+          payload: true,
+        });
+      } catch (error) {
+        console.error('Error deleting berita:', error);
+      }
+    };
+  };
