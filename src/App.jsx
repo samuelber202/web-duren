@@ -12,6 +12,8 @@ import KegiatanSinglePage from "./pages/KegiatanSinglePage";
 import ScrollToTop from "./config/ScrollToTop";
 import PengumumanWargaPage from "./pages/PengumumanWargaPage";
 import PengumumanSinglePage from "./pages/PengumumanSinglePage";
+import HapusPengumuman from "./pages/HapusPengumuman";
+import HapusBerita from "./pages/HapusBerita";
 
 function App() {
   const isUserAuthenticated = localStorage.getItem("zxc9238[0]-2Token");
@@ -49,10 +51,30 @@ function App() {
               )
             }
           />
+           <Route
+            path="hapus-pengumuman"
+            element={
+              isUserAuthenticated ? (
+                <HapusPengumuman />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
           <Route
             path="berita"
             element={
               isUserAuthenticated ? <KegiatanAdmin /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="hapus-berita"
+            element={
+              isUserAuthenticated ? (
+                <HapusBerita />
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
         </Route>

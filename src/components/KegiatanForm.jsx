@@ -8,14 +8,21 @@ import {
   Heading,
   Input,
   Textarea,
-  Grid, // Use Grid for the 2-column layout
-  GridItem, // Individual grid items
+  Grid, 
+  GridItem, 
   CircularProgress,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
+import {
+  getDatabase,
+  ref as rtdbRef,
+  push,
+  set,
+} from 'firebase/database';
 import ChakraAlert from './alerts/ChakraAlert';
+import { utcToZonedTime } from 'date-fns-tz';
+import { format } from 'date-fns';
 
 const initialValues = {
   title: '',
@@ -28,11 +35,11 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   title: Yup.string()
     .required('Masukkan judul artikel')
-    .max(100, 'Judul harus kurang dari 100 karakter'),
+    .max(55, 'Judul harus kurang dari 55 karakter'),
   content: Yup.string()
     .required('Masukkan artikel disini')
     .min(250, 'Artikel harus memiliki setidaknya 250 karakter')
-    .max(10000, 'Artikel harus kurang dari 10000 karakter'),
+    .max(3000, 'Artikel harus kurang dari 10000 karakter'),
 });
 
 const KegiatanForm = () => {
@@ -81,48 +88,44 @@ const KegiatanForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (values, { resetForm, setSubmitting }) => {
-          const payload = {
+          const db = getDatabase();
+          const kegiatanRef = rtdbRef(db, 'kegiatan');
+          const newKegiatanRef = push(kegiatanRef);
+          const jakartaTimeZone = 'Asia/Jakarta';
+          const now = new Date();
+          const currentDateTime = format(utcToZonedTime(now, jakartaTimeZone), 'dd/MM/yyyy HH:mm');        
+          const postData = {
+            id: newKegiatanRef.key, 
             title: values.title,
             content: values.content,
             content1: values.content1,
             content2: values.content2,
+            createdAt: currentDateTime,
             author: 'Admin Desa',
             image_url: url,
           };
-          setAlert(null);
 
-          try {
-            const response = await axios.post(
-              'https://651635c709e3260018c9876d.mockapi.io/kegiatan',
-              payload
-            );
-
-            if (response.status === 201) {
+          set(newKegiatanRef, postData)
+            .then(() => {
               setAlert({
                 status: 'success',
                 title: 'Success',
                 description: 'Berita Berhasil Ditambahkan!',
               });
               resetForm();
-            } else {
+            })
+            .catch((error) => {
               setAlert({
                 status: 'error',
                 title: 'Error',
-                description:
-                  'Failed to add pengumuman. Status code: ' + response.status,
+                description: 'Failed to add pengumuman. ' + error.message,
               });
-            }
-          } catch (error) {
-            setAlert({
-              status: 'error',
-              title: 'Error',
-              description: 'Error submitting the form: ' + error.message,
+            })
+            .finally(() => {
+              setSubmitting(false);
+              window.scrollTo(0, 0);
+              setImage(null);
             });
-          } finally {
-            setSubmitting(false);
-            window.scrollTo(0, 0)
-            setImage(null);
-          }
         }}
       >
         {({ isSubmitting, setFieldValue }) => (

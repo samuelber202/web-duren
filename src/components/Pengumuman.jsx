@@ -45,7 +45,7 @@ function Pengumuman() {
                   <Link to={`/pengumuman/${item.id}`}>{item.content + ' ...'}</Link>
                 )
               }
-              date={format(new Date(item.createdAt * 1000), 'dd/MM/yyyy')}
+              date={item.createdAt}
               jenis="pengumuman"
             />
           ))
