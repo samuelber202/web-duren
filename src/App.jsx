@@ -84,7 +84,7 @@ function App() {
         <Route path="/berita-warga/:id" element={<KegiatanSinglePage />} />
         <Route path="/pengumuman-warga" element={<PengumumanWargaPage />} />
         <Route path="/pengumuman-warga/:id" element={<PengumumanSinglePage />} />
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </main>
   );
