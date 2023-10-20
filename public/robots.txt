@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /login
+Sitemap: https://duren-klari.my.id/sitemap.xml
+
