@@ -241,7 +241,7 @@ const KegiatanForm = () => {
                 width="100%"
                 isDisabled={!url}
               >
-                Tambah Kegiatan
+                Tambah Berita
               </Button>
             </Box>
           </Form>
